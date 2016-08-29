@@ -1,0 +1,79 @@
+<nav id="header" class="mx-auto flex">
+  <div class="mx-auto self-center flex-auto title">CQL Editor</div>
+  <button (click)="toggleResources()" class="self-center button flex">
+    <div class="self-center" style="margin-right: 5px;">
+      CQL Language Resources
+    </div>
+    <i class="material-icons">help</i>
+  </button>
+</nav>
+<form #f="ngForm" id="form-wrapper">
+  <div class="md-flex editors">
+    <div id="input-section" class="md-col-6">
+      <div class="row flex">
+        <h4 class="title self-center md-col-1">Input</h4>
+        <div id="select-engine" class="md-col-5 self-center">
+          <div class="title">Engine Service URL</div>
+          <div class="link" [hidden]="editingEngineUri" (click)="toggleEditingEngineUri()">{{ model.engineServiceUri }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
+          <div [hidden]="!editingEngineUri">
+            <input type="text" 
+              class="input" 
+              [(ngModel)]="model.engineServiceUri"
+              name="engineServiceUri">
+          </div>
+          </div>
+        <div id="select-fhir" class="md-col-5 self-center">
+          <!--TODO: Uncomment once we have supported FHIR Service URL changes on the other end-->
+          <!--<div class="title">FHIR Service URL</div>
+          <div class="link" [hidden]="editingFhirUri" (click)="toggleEditingFhirUri()">{{ model.fhirServiceUri }}</div>
+          <div [hidden]="!editingFhirUri">
+            <input type="text" 
+              class="input" 
+              [(ngModel)]="model.fhirServiceUri"
+              name="fhirServiceUri">
+          </div>-->
+        </div>
+        <button class="button flex md-col-1" [class.running]="running" (click)="runScript()">
+          <div class="self-center">
+            {{ running ? 'Running...' : 'Run'}}
+          </div>
+          <i class="material-icons" [hidden]="running">play_arrow</i>
+        </button>
+      </div>
+      <div class="input-window" ace-editor [text]="iText" [mode]="'cql'" [options]="iOptions" [theme]="iTheme" [autoUpdateContent]="true" (textChanged)="onInputChange($event)"></div>
+    </div>
+    <div id="output-section" class="md-col-6">
+      <div class="row flex">
+        <h4 class="title flex-auto self-center">Output</h4>
+        <button class="button flex" (click)="clearOutput()">
+          <div class="self-center">
+            Clear
+          </div>
+          <i class="material-icons" [hidden]="running">clear_all</i>
+        </button>
+      </div>
+      <div class="output-window" ace-editor [text]="oText" [mode]="'cql'" [options]="oOptions" [readOnly]="oIsReadOnly" [autoUpdateContent]="true"></div>
+    </div>
+
+  </div>
+</form>
+<div class="resources" [hidden]="!resources">
+  <ul>
+    <li><a href="https://cqlengine.readthedocs.io/en/latest/" target="_blank">CQL Engine Documentation Home</a></li>
+  </ul>
+</div>
+
+
+<div id="introduction">
+  <h1>CQL Editor</h1>
+
+  <p>The CQL editor was designed to provide a live testbed for your CQL expressions.</p>
+
+  <p>The CQL service URL may be configured to point to your own CQL engine (our CQL engine endpoint is used by default)</p>
+
+  <p>This is an open-source project–feel free to <a href="https://github.com/c-schuler/Cql_Editor">contribute and leave feedback</a>.</p>
+
+  <p>The service end is a <a href="https://github.com/c-schuler/Cql_Engine">separate project</a></p>
+
+</div>
+
