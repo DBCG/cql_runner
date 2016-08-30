@@ -41,6 +41,8 @@ export class AppComponent {
 // The results will be displayed on the console to the right
 
 `;
+  // Carries the latest value from input events
+  iTextTemp: string;
   iOptions: any = { vScrollBarAlwaysVisible: true };
   iTheme: string = "clouds";
 
@@ -48,7 +50,7 @@ export class AppComponent {
     if (!this.running) {
       this.running = true;
       this._apiService
-        .post(this.iText, this.model.engineServiceUri, this.model.fhirServiceUri)
+        .post(this.iTextTemp, this.model.engineServiceUri, this.model.fhirServiceUri)
         .then(responses => {
           this.processResponses(responses);
           this.running = false;
@@ -85,6 +87,8 @@ export class AppComponent {
       return a.line == b.line ? 0 : +(a.line > b.line) || -1;
     });
 
+    this.oText += '\n';
+
     for (let response of responses) {
       // Invalid expression – could not translate
       if (response['translation-error']) {
@@ -102,14 +106,14 @@ export class AppComponent {
     }
   }
 
+  // Stores last known value of text input window
   onInputChange(code) {
-    this.iText = code;
+    this.iTextTemp = code;
   }
 
   // Output editor settings
   
   oText: string = `// CQL expression results
-
 `;
   oOptions:any = { vScrollBarAlwaysVisible: true, showLineNumbers: false , showGutter: false };
   oIsReadOnly: boolean = true;
