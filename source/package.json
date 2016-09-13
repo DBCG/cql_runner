@@ -1,7 +1,7 @@
 {
-  "name": "cql-editor",
+  "name": "cql-runner",
   "version": "0.0.1",
-  "description": "Web-based CQL Editor",
+  "description": "Web-based CQL Runner",
   "contributors": [
     "Joshua Clingo <jclingo@myharmoniq.com>"
   ],
