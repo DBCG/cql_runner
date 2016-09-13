@@ -1,5 +1,5 @@
 <nav id="header" class="mx-auto flex">
-  <div class="mx-auto self-center flex-auto title">CQL Editor</div>
+  <div class="mx-auto self-center flex-auto title">CQL Runner</div>
   <button (click)="toggleResources()" class="self-center button flex">
     <div class="self-center" style="margin-right: 5px;">
       CQL Language Resources
@@ -7,6 +7,11 @@
     <i class="material-icons">help</i>
   </button>
 </nav>
+<div class="resources" [hidden]="!resources">
+  <ul>
+    <li><a href="https://cqlengine.readthedocs.io/en/latest/" target="_blank">CQL Engine Documentation Home</a></li>
+  </ul>
+</div>
 <form #f="ngForm" id="form-wrapper">
   <div class="md-flex editors">
     <div id="input-section" class="md-col-6">
@@ -57,17 +62,12 @@
 
   </div>
 </form>
-<div class="resources" [hidden]="!resources">
-  <ul>
-    <li><a href="https://cqlengine.readthedocs.io/en/latest/" target="_blank">CQL Engine Documentation Home</a></li>
-  </ul>
-</div>
 
 
 <div id="introduction">
-  <h1>CQL Editor</h1>
+  <h1>CQL Runner</h1>
 
-  <p>The CQL editor was designed to provide a live testbed for your CQL expressions.</p>
+  <p>The CQL runner was designed to provide a live testbed for your CQL expressions.</p>
 
   <p>The CQL service URL may be configured to point to your own CQL engine (our CQL engine endpoint is used by default)</p>
 

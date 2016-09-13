@@ -3,7 +3,7 @@
 import { addProviders, async, inject } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 
-describe('App: CQL Editor', () => {
+describe('App: CQL Runner', () => {
   beforeEach(() => {
     addProviders([AppComponent]);
   });

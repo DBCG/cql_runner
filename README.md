@@ -1,27 +1,44 @@
-# CQL Editor
+# CQL Runner
 
 ## Introduction
 
 [![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 
-HTML-based Clinical Query Language (CQL) Editor
+HTML-based Clinical Query Language (CQL) Runner
 
 - Allows you to run CQL commands against a pre-existing CQL Engine from the comfort of your own browser
 
 – Runs against the [CQL execution service](https://github.com/c-schuler/Cql_Engine/tree/master/Src/java/cql-execution-service) (feel free to point to the execution service in your own project)
 
-This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.10.
+This project was generated with [angular-cli](https://github.com/angular/angular-cli) version *webpack*.
+
+## Dependencies
+
+The CQL Runner has the following global dependencies: 
+
+1) [NodeJS/NPM](https://nodejs.org/en/) v4.5+ 
+Simply download and install as per site instructions
+
+2) [angular-cli](https://github.com/angular/angular-cli) version *webpack* + 
+In your console, run `npm install -g angular-cli@webpack`
+
+## Build
+
+Run `npm install -g` -- This installs global dependencies
+
+Run `npm install` -- This installs local dependencies
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ## Development server
 Navigate to /source/ and run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+
+*Note that on Windows, you might see some error messages when serving--it should still work just fine. This is a documented Angular CLI bug and should be fixed in the next patch*
 
 ## Code scaffolding
 
 Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/route/class`.
 
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
 
 ## Running unit tests
 
