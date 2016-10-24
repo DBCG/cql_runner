@@ -3,7 +3,7 @@ import { APIService, AceEditorDirective } from './shared/index';
 
 import 'brace/theme/clouds';
 import 'brace/mode/sql';
-import 'cql-ace-syntax/cql'; 
+import 'cql-ace-syntax/cql';
 
 @Component({
   directives: [AceEditorDirective],
@@ -21,12 +21,13 @@ export class AppComponent {
   // TODO: Set this to our default
   // TODO: Get these values from separate config file
   model = {
-    fhirServiceUri: 'http://cql.dataphoria.org/cql-execution-service/cql/evaluate',
-    engineServiceUri: 'http://cql.dataphoria.org/cql-execution-service/cql/evaluate'
+    fhirServiceUri: 'http://fhirtest.uhn.ca/baseDstu3',
+    engineServiceUri: 'http://cql.dataphoria.org/cql/evaluate',
+    dataServiceUri: 'http://fhirtest.uhn.ca/baseDstu3',
+    patientId: 'null'
   };
-  
-  editingFhirUri: boolean = false;
 
+  editingFhirUri: boolean = false;
   toggleEditingFhirUri() {
     this.editingFhirUri = !this.editingFhirUri;
   }
@@ -34,6 +35,16 @@ export class AppComponent {
   editingEngineUri: boolean = false;
   toggleEditingEngineUri() {
     this.editingEngineUri = !this.editingEngineUri;
+  }
+
+  editingDataUri: boolean = false;
+  toggleEditingDataUri() {
+    this.editingDataUri = !this.editingDataUri;
+  }
+
+  editingPatientId: boolean = false;
+  toggleEditingPatientId() {
+    this.editingPatientId = !this.editingPatientId;
   }
 
   // Input editor settings
@@ -50,7 +61,7 @@ export class AppComponent {
     if (!this.running) {
       this.running = true;
       this._apiService
-        .post(this.iTextTemp, this.model.engineServiceUri, this.model.fhirServiceUri)
+        .post(this.iTextTemp, this.model.engineServiceUri, this.model.fhirServiceUri, this.model.dataServiceUri, this.model.patientId)
         .then(responses => {
           this.processResponses(responses);
           this.running = false;
@@ -70,7 +81,7 @@ export class AppComponent {
       if (!response['translation-error'] && !response['error']) {
         response.line = parseInt(response.location.substring(response.location.indexOf("[")+1, response.location.indexOf(":")));
       }
-      
+
     }
 
     return responses;
@@ -102,7 +113,7 @@ export class AppComponent {
       if (response['result']) {
         this.oText += '>> ' + response.location + ' ' + response.result + '\n';
       }
-      
+
     }
   }
 
@@ -112,7 +123,7 @@ export class AppComponent {
   }
 
   // Output editor settings
-  
+
   oText: string = `// CQL expression results
 `;
   oOptions:any = { vScrollBarAlwaysVisible: true, showLineNumbers: false , showGutter: false };

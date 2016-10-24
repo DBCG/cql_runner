@@ -10,7 +10,7 @@ constructor(private http: Http) { }
   // Send code statement
   // engineService - URI of CQL engine
   // fhirService - URI of FHIR engine
-  post(code: string, engineServiceUri: string, fhirServiceUri: string): Promise<string> {
+  post(code: string, engineServiceUri: string, fhirServiceUri: string, dataServiceUri: string, patientId: string): Promise<string> {
     let headers = new Headers({
       'Content-Type': 'text/plain',
       // TODO: Comment back in once we've added localhost to CORS on the service end'
@@ -18,7 +18,7 @@ constructor(private http: Http) { }
       //'FHIR-Service' : fhirServiceUri
     });
     return this.http
-               .post(engineServiceUri, code, {headers: headers})
+               .post(engineServiceUri, code + ';;;' + fhirServiceUri + ';;;' + dataServiceUri + ';;;' + patientId, {headers: headers})
                .toPromise()
                .then(res => res.json())
                .catch(this.handleError);

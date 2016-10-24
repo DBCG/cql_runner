@@ -21,22 +21,41 @@
           <div class="title">Engine Service URL</div>
           <div class="link" [hidden]="editingEngineUri" (click)="toggleEditingEngineUri()">{{ model.engineServiceUri }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
           <div [hidden]="!editingEngineUri">
-            <input type="text" 
-              class="input" 
+            <input type="text"
+              class="input"
               [(ngModel)]="model.engineServiceUri"
               name="engineServiceUri">
           </div>
           </div>
         <div id="select-fhir" class="md-col-5 self-center">
-          <!--TODO: Uncomment once we have supported FHIR Service URL changes on the other end-->
-          <!--<div class="title">FHIR Service URL</div>
-          <div class="link" [hidden]="editingFhirUri" (click)="toggleEditingFhirUri()">{{ model.fhirServiceUri }}</div>
+          <div class="title">FHIR Service URL</div>
+          <div class="link" [hidden]="editingFhirUri" (click)="toggleEditingFhirUri()">{{ model.fhirServiceUri }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
           <div [hidden]="!editingFhirUri">
-            <input type="text" 
-              class="input" 
+            <input type="text"
+              class="input"
               [(ngModel)]="model.fhirServiceUri"
               name="fhirServiceUri">
-          </div>-->
+          </div>
+        </div>
+        <div id="select-data" class="md-col-5 self-center">
+          <div class="title">Data Service URL</div>
+          <div class="link" [hidden]="editingDataUri" (click)="toggleEditingDataUri()">{{ model.dataServiceUri }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
+          <div [hidden]="!editingDataUri">
+            <input type="text"
+              class="input"
+              [(ngModel)]="model.dataServiceUri"
+              name="dataServiceUri">
+          </div>
+        </div>
+        <div id="select-patient" class="md-col-5 self-center">
+          <div class="title">Patient ID</div>
+          <div class="link" [hidden]="editingPatientId" (click)="toggleEditingPatientId()">{{ model.patientId }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
+          <div [hidden]="!editingPatientId" (clickOutside)="toggleEditingPatientId()">
+            <input type="text"
+              class="input"
+              [(ngModel)]="model.patientId"
+              name="patientId">
+          </div>
         </div>
         <button class="button flex md-col-2" [class.running]="running" (click)="runScript()">
           <div class="self-center">
@@ -76,4 +95,3 @@
   <p>The execution service end is a <a href="https://github.com/DBCG/cql_execution_service">separate project</a></p>
 
 </div>
-

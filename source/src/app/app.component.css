@@ -29,7 +29,7 @@ button {
 #header .title {
     font-size: 1em;
     line-height: 1em;
-    margin-left: 5px; 
+    margin-left: 5px;
     margin-right: 5px;
     font-weight: 600;
 }
@@ -151,24 +151,25 @@ button {
     font-size: 3em;
 }
 
-#select-engine, #select-fhir {
+#select-engine, #select-fhir, #select-data, #select-patient {
     margin: 10px;
 }
 
-#select-engine .title, #select-fhir .title {
+#select-engine .title, #select-fhir .title, #select-data .title, #select-patient .title {
     margin: 0;
 }
 
-#select-engine .link:hover, #select-fhir .link:hover {
+#select-engine .link:hover, #select-fhir .link:hover, #select-data .link:hover, #select-patient .link:hover {
     cursor: pointer;
 }
 
-#select-engine .link, #select-fhir .link {
+#select-engine .link, #select-fhir .link, #select-data .link, #select-patient .link {
     text-decoration: underline;
     font-size: 0.75em;
+    width: 100%;
 }
 
-#select-engine .input, #select-fhir .input  {
-    width:100%;
+#select-engine .input, #select-fhir .input, #select-data .input, #select-patient .input  {
     font-size: 0.75em;
+    width: 100%;
 }
