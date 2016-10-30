@@ -28,7 +28,7 @@
           </div>
           </div>
         <div id="select-fhir" class="md-col-5 self-center">
-          <div class="title">FHIR Service URL</div>
+          <div class="title">Terminology Service URL</div>
           <div class="link" [hidden]="editingFhirUri" (click)="toggleEditingFhirUri()">{{ model.fhirServiceUri }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
           <div [hidden]="!editingFhirUri">
             <input type="text"
@@ -38,7 +38,7 @@
           </div>
         </div>
         <div id="select-data" class="md-col-5 self-center">
-          <div class="title">Data Service URL</div>
+          <div class="title">FHIR Service URL</div>
           <div class="link" [hidden]="editingDataUri" (click)="toggleEditingDataUri()">{{ model.dataServiceUri }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
           <div [hidden]="!editingDataUri">
             <input type="text"

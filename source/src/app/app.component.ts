@@ -58,6 +58,7 @@ export class AppComponent {
   iTheme: string = "clouds";
 
   runScript() {
+    this.oText = '';
     if (!this.running) {
       this.running = true;
       this._apiService
@@ -111,7 +112,7 @@ export class AppComponent {
       }
       // Valid expression
       if (response['result']) {
-        this.oText += '>> ' + response.location + ' ' + response.result + '\n';
+        this.oText += '>> ' + response['name'] + ' ' + response.location + ' ' + response.result + '\n';
       }
 
     }
