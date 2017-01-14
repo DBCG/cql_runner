@@ -10,15 +10,24 @@ constructor(private http: Http) { }
   // Send code statement
   // engineService - URI of CQL engine
   // fhirService - URI of FHIR engine
-  post(code: string, engineServiceUri: string, fhirServiceUri: string, dataServiceUri: string, patientId: string): Promise<string> {
+  post(code: string, engineServiceUri: string, fhirServiceUri: string, authUser: string, authPass: string, dataServiceUri: string, patientId: string): Promise<string> 
+  {
     let headers = new Headers({
       'Content-Type': 'text/plain',
       // TODO: Comment back in once we've added localhost to CORS on the service end'
       // Reference: http://stackoverflow.com/questions/18234366/restful-webservice-how-to-set-headers-in-java-to-accept-xmlhttprequest-allowed
       //'FHIR-Service' : fhirServiceUri
     });
+    var data = {
+      "code": code,
+      "fhirServiceUri": fhirServiceUri,
+      "authUser": authUser,
+      "authPass": authPass,
+      "dataServiceUri": dataServiceUri,
+      "patientId": patientId
+    };
     return this.http
-               .post(engineServiceUri, code + ';;;' + fhirServiceUri + ';;;' + dataServiceUri + ';;;' + patientId, {headers: headers})
+               .post(engineServiceUri, JSON.stringify(data), {headers: headers})
                .toPromise()
                .then(res => res.json())
                .catch(this.handleError);

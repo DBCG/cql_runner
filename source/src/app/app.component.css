@@ -153,6 +153,8 @@ button {
 
 #select-engine, #select-fhir, #select-data, #select-patient {
     margin: 10px;
+    max-width: 125px;
+    word-wrap: break-word;
 }
 
 #select-engine .title, #select-fhir .title, #select-data .title, #select-patient .title {
@@ -166,10 +168,9 @@ button {
 #select-engine .link, #select-fhir .link, #select-data .link, #select-patient .link {
     text-decoration: underline;
     font-size: 0.75em;
-    width: 100%;
 }
 
 #select-engine .input, #select-fhir .input, #select-data .input, #select-patient .input  {
     font-size: 0.75em;
-    width: 100%;
+    max-width: 100px;
 }

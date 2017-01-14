@@ -22,6 +22,8 @@ export class AppComponent {
   // TODO: Get these values from separate config file
   model = {
     fhirServiceUri: 'http://fhirtest.uhn.ca/baseDstu3',
+    authUser: 'user ID',
+    authPass: 'password',
     engineServiceUri: 'http://cql.dataphoria.org/cql/evaluate',
     dataServiceUri: 'http://fhirtest.uhn.ca/baseDstu3',
     patientId: 'null'
@@ -30,6 +32,11 @@ export class AppComponent {
   editingFhirUri: boolean = false;
   toggleEditingFhirUri() {
     this.editingFhirUri = !this.editingFhirUri;
+  }
+
+  editingAuth: boolean = false;
+  toggleEditingAuth() {
+    this.editingAuth = !this.editingAuth;
   }
 
   editingEngineUri: boolean = false;
@@ -62,7 +69,7 @@ export class AppComponent {
     if (!this.running) {
       this.running = true;
       this._apiService
-        .post(this.iTextTemp, this.model.engineServiceUri, this.model.fhirServiceUri, this.model.dataServiceUri, this.model.patientId)
+        .post(this.iTextTemp, this.model.engineServiceUri, this.model.fhirServiceUri, this.model.authUser, this.model.authPass, this.model.dataServiceUri, this.model.patientId)
         .then(responses => {
           this.processResponses(responses);
           this.running = false;

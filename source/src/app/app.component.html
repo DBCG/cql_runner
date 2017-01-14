@@ -36,6 +36,18 @@
               [(ngModel)]="model.fhirServiceUri"
               name="fhirServiceUri">
           </div>
+          <div class="title">Authorization</div>
+          <div class="link" [hidden]="editingAuth" (click)="toggleEditingAuth()">{{ model.Auth }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
+          <div [hidden]="!editingAuth">
+            <input type="text"
+              class="input"
+              [(ngModel)]="model.authUser"
+              name="authUser">
+            <input type="text"
+              class="input"
+              [(ngModel)]="model.authPass"
+              name="authPass">
+          </div>
         </div>
         <div id="select-data" class="md-col-5 self-center">
           <div class="title">FHIR Service URL</div>
