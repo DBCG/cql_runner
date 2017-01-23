@@ -20,6 +20,12 @@ button {
     margin:0;
 }
 
+textarea {
+    height: 37px;
+    width: 115px;
+    resize: none;
+}
+
 #header {
     height: 2em;
     background-color: #2f2f2f;
@@ -61,6 +67,7 @@ button {
     padding-top: 10px;
     padding-bottom: 10px;
     list-style: none;
+    margin-bottom: 0 !important;
 }
 
 .resources a {
@@ -75,23 +82,35 @@ button {
     border-bottom: 1px solid #efefef;
 }
 
+.nopaddingmargin {
+   padding: 0px !important;
+   margin: 0px !important;
+}
+
+.nopadding {
+    padding: 0px !important;
+}
+
 .input-window, .output-window {
     min-height: 600px;
-    width:100%;
-    overflow: auto;
 }
 
 #input-section {
     background: #ebebeb;
     color: #333;
+    max-width: 100% !important;
 }
 
 #input-section .row {
-    min-height: 100px;
+    min-height: 75px;
+    max-width: 100%;
+    margin-right: 0;
+    margin-left: 0;
     border-bottom: 1px solid #efefef;
 }
 
 #input-section .title {
+    padding: 0 !important;
     margin: 10px;
 }
 
@@ -101,6 +120,8 @@ button {
     color: white;
     font-size: 1em;
     padding: 5px 10px;
+    display: inline-block;
+    min-width: 70px;
 }
 
 #input-section .button:hover {
@@ -121,7 +142,10 @@ button {
 }
 
 #output-section .row {
-    min-height: 100px;
+    min-height: 75px;
+    max-width: 100%;
+    margin-right: 0;
+    margin-left: 0;
     border-bottom: 1px solid #555651;
 }
 
@@ -135,6 +159,7 @@ button {
     color: white;
     font-size: 1em;
     padding: 5px 10px;
+    display: inline-block;
 }
 
 #output-section .button:hover {
@@ -151,26 +176,37 @@ button {
     font-size: 3em;
 }
 
-#select-engine, #select-fhir, #select-data, #select-patient {
-    margin: 10px;
+#select-engine, #select-fhir, #select-auth, #select-data, #select-patient {
+    margin: 5px;
     max-width: 125px;
     word-wrap: break-word;
 }
 
-#select-engine .title, #select-fhir .title, #select-data .title, #select-patient .title {
+#select-engine .title, #select-fhir .title, #select-auth .title, #select-data .title, #select-patient .title {
+    font-size: 1em;
     margin: 0;
 }
 
-#select-engine .link:hover, #select-fhir .link:hover, #select-data .link:hover, #select-patient .link:hover {
+#select-engine .link:hover, #select-fhir .link:hover, #select-auth .link:hover, #select-data .link:hover, #select-patient .link:hover {
     cursor: pointer;
 }
 
-#select-engine .link, #select-fhir .link, #select-data .link, #select-patient .link {
+#select-engine .link, #select-fhir .link, #select-auth .link, #select-data .link, #select-patient .link {
     text-decoration: underline;
     font-size: 0.75em;
 }
 
-#select-engine .input, #select-fhir .input, #select-data .input, #select-patient .input  {
+#select-engine .input, #select-fhir .input, #select-data .input  {
     font-size: 0.75em;
-    max-width: 100px;
+    max-width: 125px;
+}
+
+#select-patient .input{
+    font-size: 0.75em;
+    max-width: 70px;
+}
+
+ #select-auth .input  {
+    font-size: 0.75em;
+    max-width: 80px;
 }

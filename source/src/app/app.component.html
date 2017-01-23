@@ -2,40 +2,42 @@
   <div class="mx-auto self-center flex-auto title">CQL Runner</div>
   <button (click)="toggleResources()" class="self-center button flex">
     <div class="self-center" style="margin-right: 5px;">
-      CQL Language Resources
+      <span class="container md-col-1">CQL Language Resources<i class="material-icons pull-right">help</i></span>
     </div>
-    <i class="material-icons">help</i>
   </button>
 </nav>
 <div class="resources" [hidden]="!resources">
   <ul>
-    <li><a href="https://cqlengine.readthedocs.io/en/latest/" target="_blank">CQL Engine Documentation Home</a></li>
+    <li><a href="https://github.com/DBCG/cql_engine/wiki" target="_blank">CQL Engine Documentation Home</a></li>
   </ul>
 </div>
 <form #f="ngForm" id="form-wrapper">
   <div class="md-flex editors">
-    <div id="input-section" class="md-col-6">
+    <div id="input-section" class="col-lg-6 nopaddingmargin">
       <div class="row flex">
-        <h4 class="title self-center md-col-1">Input</h4>
-        <div id="select-engine" class="md-col-5 self-center">
-          <div class="title">Engine Service URL</div>
+        <h4 class="self-center col-lg-1 title">Input</h4>
+        
+        <div id="select-engine" class="col-lg-2 nopadding self-baseline">
+          <div class="title">Engine URL</div>
           <div class="link" [hidden]="editingEngineUri" (click)="toggleEditingEngineUri()">{{ model.engineServiceUri }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
           <div [hidden]="!editingEngineUri">
-            <input type="text"
-              class="input"
+            <textarea class="input"
               [(ngModel)]="model.engineServiceUri"
               name="engineServiceUri">
+            </textarea>
           </div>
-          </div>
-        <div id="select-fhir" class="md-col-5 self-center">
-          <div class="title">Terminology Service URL</div>
+        </div>
+        <div id="select-fhir" class="col-lg-2 nopadding self-baseline">
+          <div class="title">Terminology URL</div>
           <div class="link" [hidden]="editingFhirUri" (click)="toggleEditingFhirUri()">{{ model.fhirServiceUri }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
           <div [hidden]="!editingFhirUri">
-            <input type="text"
-              class="input"
+            <textarea class="input"
               [(ngModel)]="model.fhirServiceUri"
               name="fhirServiceUri">
+            </textarea>
           </div>
+        </div>
+        <div id="select-auth" class="col-lg-2 nopadding self-baseline">
           <div class="title">Authorization</div>
           <div class="link" [hidden]="editingAuth" (click)="toggleEditingAuth()">{{ model.Auth }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
           <div [hidden]="!editingAuth">
@@ -43,23 +45,23 @@
               class="input"
               [(ngModel)]="model.authUser"
               name="authUser">
-            <input type="text"
+            <input type="password"
               class="input"
               [(ngModel)]="model.authPass"
               name="authPass">
           </div>
         </div>
-        <div id="select-data" class="md-col-5 self-center">
-          <div class="title">FHIR Service URL</div>
+        <div id="select-data" class="col-lg-2 nopadding self-baseline">
+          <div class="title">FHIR URL</div>
           <div class="link" [hidden]="editingDataUri" (click)="toggleEditingDataUri()">{{ model.dataServiceUri }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
           <div [hidden]="!editingDataUri">
-            <input type="text"
-              class="input"
+            <textarea class="input"
               [(ngModel)]="model.dataServiceUri"
               name="dataServiceUri">
+            </textarea>
           </div>
         </div>
-        <div id="select-patient" class="md-col-5 self-center">
+        <div id="select-patient" class="col-lg-2 nopadding self-baseline">
           <div class="title">Patient ID</div>
           <div class="link" [hidden]="editingPatientId" (click)="toggleEditingPatientId()">{{ model.patientId }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
           <div [hidden]="!editingPatientId" (clickOutside)="toggleEditingPatientId()">
@@ -69,7 +71,8 @@
               name="patientId">
           </div>
         </div>
-        <button class="button flex md-col-2" [class.running]="running" (click)="runScript()">
+
+        <button class="button col-lg-1 nopadding flex" [class.running]="running" (click)="runScript()">
           <div class="self-center">
             {{ running ? 'Running...' : 'Run'}}
           </div>
@@ -78,11 +81,12 @@
       </div>
       <div class="input-window" ace-editor [text]="iText" [mode]="'cql'" [options]="iOptions" [theme]="iTheme" [autoUpdateContent]="true" (textChanged)="onInputChange($event)"></div>
     </div>
-    <div id="output-section" class="md-col-6">
+    
+    <div id="output-section" class="col-lg-6 nopadding">
       <div class="row flex">
         <h4 class="title flex-auto self-center">Output</h4>
-        <button class="button flex" (click)="clearOutput()">
-          <div class="self-center">
+        <button class="button col-lg-1 nopadding flex" (click)="clearOutput()">
+          <div class="self-auto">
             Clear
           </div>
           <i class="material-icons" [hidden]="running">clear_all</i>
