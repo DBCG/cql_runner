@@ -17,7 +17,7 @@
       <div class="row flex">
         <h4 class="self-center col-lg-1 title">Input</h4>
         
-        <div id="select-engine" class="col-lg-2 nopadding self-baseline">
+        <!--<div id="select-engine" class="col-lg-2 nopadding self-baseline">
           <div class="title">Engine URL</div>
           <div class="link" [hidden]="editingEngineUri" (click)="toggleEditingEngineUri()">{{ model.engineServiceUri }} <i class="material-icons" style="font-size: 0.75em">mode_edit</i></div>
           <div [hidden]="!editingEngineUri">
@@ -70,6 +70,119 @@
               [(ngModel)]="model.patientId"
               name="patientId">
           </div>
+        </div>-->
+
+        <div class="self-center dropdown lg-col-10 nopadding" id="config">
+          <a class="dropdown-toggle" href="#" type="button" id="dropdownMenu1">
+            <span class="glyphicon glyphicon-wrench"></span> Configuration <span class="caret"></span>
+          </a>
+          <ul class="nav nav-pills nav-stacked dropdown-menu" id="configMenu">
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Engine Service URL <span class="caret-right"></span>
+              </a>
+              <ul class="dropdown-menu rightMenu">
+                <li>
+                  <div class="select-engine">
+                    <span>URL to CQL Execution Service:</span>
+                    <input type="text" class="form-control" id="engineUrl" 
+                      [(ngModel)]="model.engineServiceUri"
+                      name="engineServiceUri">
+                  </div>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle nopadding" data-toggle="dropdown" href="#">
+                    Authorization <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <div class="select-auth-engine">
+                        <span>Username: </span>
+                        <input type="text" class="form-control">
+                        <span>Password: </span>
+                        <input type="password" class="form-control">
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                FHIR Provider URL <span class="caret-right"></span>
+              </a>
+              <ul class="dropdown-menu rightMenu">
+                <li>
+                  <div class="select-data">
+                    <span>URL to FHIR Resource Provider:</span>
+                    <input type="text" class="form-control" id="dataUrl" 
+                      [(ngModel)]="model.dataServiceUri"
+                      name="dataServiceUri">
+                  </div>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle nopadding" data-toggle="dropdown" href="#">
+                    Authorization <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <div class="select-auth-data">
+                        <span>Username: </span>
+                        <input type="text" class="form-control">
+                        <span>Password: </span>
+                        <input type="password" class="form-control">
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Terminology Service URL <span class="caret-right"></span>
+              </a>
+              <ul class="dropdown-menu rightMenu">
+                <li>
+                  <div class="select-fhir">
+                    <span>URL to FHIR Terminology Provider:</span>
+                    <input type="text" class="form-control" id="termUrl" 
+                      [(ngModel)]="model.fhirServiceUri"
+                      name="fhirServiceUri">
+                  </div>
+                </li>
+                <li class="dropdown">
+                  <a class="dropdown-toggle nopadding" data-toggle="dropdown" href="#">
+                    Authorization <span class="caret"></span>
+                  </a>
+                  <ul class="dropdown-menu">
+                    <li>
+                      <div class="select-auth-term">
+                        <span>Username: </span>
+                        <input type="text" class="form-control">
+                        <span>Password: </span>
+                        <input type="password" class="form-control">
+                      </div>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                Patient Data <span class="caret-right"></span>
+              </a>
+              <ul class="dropdown-menu rightMenu">
+                <li>
+                  <div class="select-patient">
+                    <span>Unique Patient Id:</span>
+                    <input type="text" class="form-control" id="PatId" 
+                      [(ngModel)]="model.patientId"
+                      name="patientId">
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
         </div>
 
         <button class="button col-lg-1 nopadding flex" [class.running]="running" (click)="runScript()">

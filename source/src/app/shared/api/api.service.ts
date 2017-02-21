@@ -10,7 +10,7 @@ constructor(private http: Http) { }
   // Send code statement
   // engineService - URI of CQL engine
   // fhirService - URI of FHIR engine
-  post(code: string, engineServiceUri: string, fhirServiceUri: string, authUser: string, authPass: string, dataServiceUri: string, patientId: string): Promise<string> 
+  post(code: string, engineServiceUri: string, engineUser: string, enginePass: string, fhirServiceUri: string, fhirUser: string, fhirPass: string, dataServiceUri: string, dataUser: string, dataPass: string, patientId: string): Promise<string> 
   {
     let headers = new Headers({
       'Content-Type': 'text/plain',
@@ -21,11 +21,14 @@ constructor(private http: Http) { }
     var data = {
       "code": code,
       "fhirServiceUri": fhirServiceUri,
-      "authUser": authUser,
-      "authPass": authPass,
+      "fhirUser": fhirUser,
+      "fhirPass": fhirPass,
       "dataServiceUri": dataServiceUri,
+      "dataUser": dataUser,
+      "dataPass": dataPass,
       "patientId": patientId
     };
+    // TODO: enable authorization for engine service
     return this.http
                .post(engineServiceUri, JSON.stringify(data), {headers: headers})
                .toPromise()

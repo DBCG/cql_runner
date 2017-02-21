@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { APIService, AceEditorDirective } from './shared/index';
+import {DROPDOWN_DIRECTIVES} from 'ng2-bs-dropdown';
 
 import 'brace/theme/clouds';
 import 'brace/mode/sql';
 import 'cql-ace-syntax/cql';
 
 @Component({
-  directives: [AceEditorDirective],
+  directives: [AceEditorDirective, DROPDOWN_DIRECTIVES],
   providers: [APIService],
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -22,37 +23,16 @@ export class AppComponent {
   // TODO: Get these values from separate config file
   model = {
     fhirServiceUri: 'http://fhirtest.uhn.ca/baseDstu3',
-    authUser: 'user ID',
-    authPass: 'password',
+    termUser: 'user ID',
+    termPass: 'password',
     engineServiceUri: 'http://cql.dataphoria.org/cql/evaluate',
+    engineUser: 'user ID',
+    enginePass: 'password',
     dataServiceUri: 'http://fhirtest.uhn.ca/baseDstu3',
+    dataUser: 'user ID',
+    dataPass: 'password',
     patientId: 'null'
   };
-
-  editingFhirUri: boolean = false;
-  toggleEditingFhirUri() {
-    this.editingFhirUri = !this.editingFhirUri;
-  }
-
-  editingAuth: boolean = false;
-  toggleEditingAuth() {
-    this.editingAuth = !this.editingAuth;
-  }
-
-  editingEngineUri: boolean = false;
-  toggleEditingEngineUri() {
-    this.editingEngineUri = !this.editingEngineUri;
-  }
-
-  editingDataUri: boolean = false;
-  toggleEditingDataUri() {
-    this.editingDataUri = !this.editingDataUri;
-  }
-
-  editingPatientId: boolean = false;
-  toggleEditingPatientId() {
-    this.editingPatientId = !this.editingPatientId;
-  }
 
   // Input editor settings
   iText: string = `// Enter your CQL script here and press 'Run'
@@ -69,7 +49,7 @@ export class AppComponent {
     if (!this.running) {
       this.running = true;
       this._apiService
-        .post(this.iTextTemp, this.model.engineServiceUri, this.model.fhirServiceUri, this.model.authUser, this.model.authPass, this.model.dataServiceUri, this.model.patientId)
+        .post(this.iTextTemp, this.model.engineServiceUri, this.model.engineUser, this.model.enginePass, this.model.fhirServiceUri, this.model.termUser, this.model.termPass, this.model.dataServiceUri, this.model.dataUser, this.model.dataPass, this.model.patientId)
         .then(responses => {
           this.processResponses(responses);
           this.running = false;

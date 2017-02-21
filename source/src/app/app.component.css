@@ -16,6 +16,15 @@ h1 {
     font-size: 3em;
 }
 
+li {
+    padding: 5px;
+}
+
+a {
+    color: #333;
+    -webkit-appearance: none;
+}
+
 button {
     margin:0;
 }
@@ -93,6 +102,33 @@ textarea {
 
 .input-window, .output-window {
     min-height: 600px;
+}
+
+.rightMenu {
+    position: absolute;
+    float :right;
+    top: 0;
+    left: 200px;
+    min-width: 260px !important;
+}
+
+.caret-right {
+    float: right;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin-left: 2px;
+    vertical-align: middle;
+    border-left: 5px solid;
+    border-left-color:#999999;
+    border-bottom: 5px solid transparent;
+    border-top: 5px solid transparent;
+    margin-top:5px;
+    margin-right:-8px;
+}
+
+#configMenu {
+    min-width: 200px !important; 
 }
 
 #input-section {
@@ -178,7 +214,7 @@ textarea {
 
 #select-engine, #select-fhir, #select-auth, #select-data, #select-patient {
     margin: 5px;
-    max-width: 125px;
+    min-width: 200px !important;
     word-wrap: break-word;
 }
 
