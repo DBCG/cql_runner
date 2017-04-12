@@ -20,7 +20,7 @@ The CQL Runner has the following global dependencies:
 Simply download and install as per site instructions
 
 2) [angular-cli](https://github.com/angular/angular-cli) version *webpack* + 
-In your console, run `npm install -g angular-cli@1.0.0-beta.11-webpack.2`
+In your console, run `npm install -g angular-cli@1.0.0-rc.1`
 
 ## Build
 
