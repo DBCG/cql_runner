@@ -1,0 +1,19 @@
+/* You can add global styles to this file, and also import other style files */
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+.CodeMirror-linenumber {
+  text-align: center !important;
+}
+
+.CodeMirror-scroll {
+  margin: -1px !important;
+}
+
+.CodeMirror {
+  min-height: 600px !important;
+  font-size: 12px !important;
+}
+
+body {
+  padding-bottom: 35px;
+}
