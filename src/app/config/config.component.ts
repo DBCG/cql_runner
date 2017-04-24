@@ -12,7 +12,7 @@ declare var $: any;
                             <div class="row">
                                 <div class="col-lg-4">
                                     <span>URL to CQL Execution Service:</span>
-                                    <input type="text" class="form-control" id="engineUrl" (change)="setEngineEvent()" placeholder="http://cql.dataphoria.org/cql/evaluate">
+                                    <input type="text" class="form-control" id="engineUrl" (change)="setEngineEvent()" placeholder="{{engineURL}}">
                                 </div>
                             </div>                            
                         </div>                        
@@ -26,17 +26,21 @@ declare var $: any;
                             <div class="row">
                                 <div class="col-lg-4">
                                     <span>URL to the terminology service:</span>
-                                    <input type="text" class="form-control" id="termUrl" (change)="setTermEvent()" placeholder="http://fhirtest.uhn.ca/baseDstu3">
-                                </div>
+                                    <input type="text" class="form-control" id="termUrl" (change)="setTermEvent()" placeholder="{{termURL}}">
+                                </div>                                
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-4">
                                     <span>User Name:</span>
-                                    <input type="text" class="form-control" id="termUser" (change)="setTermUserEvent()" placeholder="if applicable">
+                                    <input type="text" class="form-control" id="termUser" (change)="setTermUserEvent()" placeholder="{{termUSER}}">
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-4">
                                     <span>Password:</span>
-                                    <input type="password" class="form-control" id="termPass" (change)="setTermPassEvent()" placeholder="if applicable">
-                                </div>    
-                            </div>                     
+                                    <input type="password" class="form-control" id="termPass" (change)="setTermPassEvent()" value="{{termPASS}}">
+                                </div> 
+                            </div>
                         </div>                        
                     </div>
                 </template>
@@ -48,17 +52,21 @@ declare var $: any;
                             <div class="row">
                                 <div class="col-lg-4">
                                     <span>URL to FHIR resource provider:</span>
-                                    <input type="text" class="form-control" id="dataUrl" (change)="setDataEvent()" placeholder="http://fhirtest.uhn.ca/baseDstu3">
-                                </div>
+                                    <input type="text" class="form-control" id="dataUrl" (change)="setDataEvent()" placeholder="{{dataURL}}">
+                                </div>                                                                 
+                            </div>  
+                            <div class="row">
                                 <div class="col-lg-4">
                                     <span>User Name:</span>
-                                    <input type="text" class="form-control" id="dataUser" (change)="setDataUserEvent()" placeholder="if applicable">
+                                    <input type="text" class="form-control" id="dataUser" (change)="setDataUserEvent()" placeholder="{{dataUSER}}">
                                 </div>
+                            </div>
+                            <div class="row">
                                 <div class="col-lg-4">
                                     <span>Password:</span>
-                                    <input type="password" class="form-control" id="dataPass" (change)="setDataPassEvent()" placeholder="if applicable">
-                                </div>    
-                            </div>                     
+                                    <input type="password" class="form-control" id="dataPass" (change)="setDataPassEvent()" value="{{dataPASS}}">
+                                </div> 
+                            </div>
                         </div>                        
                     </div>
                 </template>
@@ -70,7 +78,7 @@ declare var $: any;
                             <div class="row">
                                 <div class="col-lg-4">
                                     <span>Unique Patient ID:</span>
-                                    <input type="text" class="form-control" id="patientId" (change)="setPatientEvent()" placeholder="Null">
+                                    <input type="text" class="form-control" id="patientId" (change)="setPatientEvent()" placeholder="{{patientId}}">
                                 </div>
                             </div>                            
                         </div>                        
@@ -101,43 +109,53 @@ export class ConfigComponent {
   @Output('dataPass') dataPass = new EventEmitter();
   @Output('patient') patient = new EventEmitter();
 
+  engineURL: string = "http://cql.dataphoria.org/cql/evaluate";
+  termURL: string = "http://fhirtest.uhn.ca/baseDstu3";
+  termUSER: string = "If applicable";
+  termPASS: string = "If applicable";
+  dataURL: string = "http://fhirtest.uhn.ca/baseDstu3";
+  dataUSER: string = "If applicable";
+  dataPASS: string = "If applicable";
+  patientId: string = "Null";
+
   setEngineEvent() {
-    var engineURL = $('#engineUrl').val();
-    this.engine.emit(engineURL);
+    this.engineURL = $('#engineUrl').val();
+    this.engine.emit(this.engineURL);
   }
 
   setTermEvent() {
-    var termURL = $('#termUrl').val();
-    this.term.emit(termURL);
+    this.termURL = $('#termUrl').val();
+    this.term.emit(this.termURL);
   }
 
   setTermUserEvent() {
-    var termUSER = $('#termUser').val();
-    this.termUser.emit(termUSER);
+    this.termUSER = $('#termUser').val();
+    this.termUser.emit(this.termUSER);
   }
 
   setTermPassEvent() {
-    var termPASS = $('#termPass').val();
-    this.termPass.emit(termPASS);
+    this.termPASS = $('#termPass').val();
+    this.termPass.emit(this.termPASS);
   }
 
   setDataEvent() {
-    var dataURL = $('#dataUrl').val();
-    this.data.emit(dataURL);
+    this.dataURL = $('#dataUrl').val();
+    this.data.emit(this.dataURL);
   }
 
   setDataUserEvent() {
-    var dataUSER = $('#dataUser').val();
-    this.dataUser.emit(dataUSER);
+    this.dataUSER = $('#dataUser').val();
+    this.dataUser.emit(this.dataUSER);
   }
 
   setDataPassEvent() {
-    var dataPASS = $('#dataPass').val();
-    this.dataPass.emit(dataPASS);
+    this.dataPASS = $('#dataPass').val();
+    this.dataPass.emit(this.dataPASS);
   }
 
   setPatientEvent() {
-    var patient = $('#patientId').val();
-    this.patient.emit(patient);
+    this.patientId = $('#patientId').val();
+    this.patient.emit(this.patientId);
+
   }
 }
