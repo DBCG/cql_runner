@@ -27,9 +27,9 @@
     "zone.js": "^0.7.6"
   },
   "devDependencies": {
-    "@angular/cli": "1.0.0-rc.1",
+    "@angular/cli": "1.0.0",
     "@angular/compiler-cli": "^2.4.0",
-    "@ng-bootstrap/ng-bootstrap": "^1.0.0-alpha.21",
+    "@ng-bootstrap/ng-bootstrap": "1.0.0-alpha.21",
     "@types/jasmine": "2.5.38",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
@@ -45,6 +45,6 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.4.2",
-    "typescript": "~2.0.10"
+    "typescript": "^2.0.10"
   }
 }
