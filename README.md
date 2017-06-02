@@ -16,11 +16,11 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 
 The CQL Runner has the following global dependencies: 
 
-1) [NodeJS/NPM](https://nodejs.org/en/) v4.5+ 
+1) [NodeJS/NPM](https://nodejs.org/en/) v6.9+ 
 Simply download and install as per site instructions
 
 2) [angular-cli](https://github.com/angular/angular-cli) version *webpack* + 
-In your console, run `npm install -g angular-cli@1.0.0-rc.1`
+In your console, run `npm install -g @angular/cli@1.0.0`
 
 ## Build
 
