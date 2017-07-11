@@ -1,4 +1,13 @@
-# CQL Runner
+# CQL Runner 
+
+## New Developments
+
+7/10/2017 - Added a [formatter page](http://cql-runner.dataphoria.org/format) for formatting CQL code.
+
+## See it in Action
+
+[CQL Runner](http://cql-runner.dataphoria.org/) implementation.
+[CQL Formatter](http://cql-runner.dataphoria.org/format) implementation.
 
 ## Introduction
 
