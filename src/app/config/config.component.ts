@@ -109,7 +109,7 @@ export class ConfigComponent {
   @Output('dataPass') dataPass = new EventEmitter();
   @Output('patient') patient = new EventEmitter();
 
-  engineURL: string = "http://cql.dataphoria.org/cql/evaluate";
+  engineURL: string = "http://measure.eval.kanvix.com/cqf-ruler/cql/evaluate";
   termURL: string = "http://fhirtest.uhn.ca/baseDstu3";
   termUSER: string = "If applicable";
   termPASS: string = "If applicable";

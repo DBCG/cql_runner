@@ -11,6 +11,10 @@ import { InputComponent } from './input/input.component';
 import { NavComponent } from './nav/nav.component';
 import { OutputComponent } from './output/output.component';
 import { RunnerDirective } from './runner.directive';
+import { CqlFormatterComponent } from './cql-formatter/cql-formatter.component';
+import { CqlRunnerComponent } from './cql-runner/cql-runner.component';
+
+import { routing } from './app.routes';
 
 @NgModule({
   declarations: [
@@ -20,13 +24,16 @@ import { RunnerDirective } from './runner.directive';
     InputComponent,
     NavComponent,
     OutputComponent,
-    RunnerDirective
+    RunnerDirective,
+    CqlFormatterComponent,
+    CqlRunnerComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    routing
   ],
   providers: [],
   bootstrap: [RunnerComponent]

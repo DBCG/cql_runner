@@ -12,6 +12,7 @@ export class ApiService {
   {
     let headers = new Headers({
       'Content-Type': 'text/plain'
+      //'Access-Control-Allow-Origin': 'http://localhost:8080/cqf-ruler/format'
     });
 
     var data = {
