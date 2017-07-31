@@ -6,12 +6,13 @@ import { Component } from '@angular/core';
         <nav class="navbar navbar-default navbar-static-top" id="header">
             <span class="title self-center">CQL Runner</span>
             <button (click)="toggleResources()" class="self-center button pull-right">
-                <span class="self-center resLink">CQL Language Resources <i class="glyphicon glyphicon-question-sign"></i></span>
+                <span class="self-center resLink">CQL Resources <i class="glyphicon glyphicon-question-sign"></i></span>
             </button>                 
         </nav>
         <div class="resources" [hidden]="!resources">
             <ul>
                 <li><a href="https://github.com/DBCG/cql_engine/wiki" target="_blank">CQL Engine Documentation Home</a></li>
+                <li><a href="http://cql-runner.dataphoria.org/format">CQL Formatter</a></li>
             </ul>
         </div>
     `,

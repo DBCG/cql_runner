@@ -11,7 +11,7 @@ export class ApiService {
   post(code: string, engineServiceUri: string, engineUser: string, enginePass: string, fhirServiceUri: string, fhirUser: string, fhirPass: string, dataServiceUri: string, dataUser: string, dataPass: string, patientId: string): Promise<string>
   {
     let headers = new Headers({
-      'Content-Type': 'text/plain'
+      'Content-Type': 'application/json'
       //'Access-Control-Allow-Origin': 'http://localhost:8080/cqf-ruler/format'
     });
 

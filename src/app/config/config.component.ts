@@ -109,11 +109,11 @@ export class ConfigComponent {
   @Output('dataPass') dataPass = new EventEmitter();
   @Output('patient') patient = new EventEmitter();
 
-  engineURL: string = "http://measure.eval.kanvix.com/cqf-ruler/cql/evaluate";
-  termURL: string = "http://fhirtest.uhn.ca/baseDstu3";
+  engineURL: string = "http://cql.dataphoria.org/cql/evaluate";
+  termURL: string = "http://measure.eval.kanvix.com/cqf-ruler/baseDstu3";
   termUSER: string = "If applicable";
   termPASS: string = "If applicable";
-  dataURL: string = "http://fhirtest.uhn.ca/baseDstu3";
+  dataURL: string = "http://measure.eval.kanvix.com/cqf-ruler/baseDstu3";
   dataUSER: string = "If applicable";
   dataPASS: string = "If applicable";
   patientId: string = "Null";

@@ -20,7 +20,7 @@ export class CqlFormatterComponent implements OnInit {
   }
 
   format() {
-    this._apiService.post($('.CodeMirror')[0].CodeMirror.getValue(), 'http://measure.eval.kanvix.com/cqf-ruler/format', null, null, null, null, null, null, null, null, null)
+    this._apiService.post($('.CodeMirror')[0].CodeMirror.getValue(), 'http://cql.dataphoria.org/cql/format', null, null, null, null, null, null, null, null, null)
       .then(responses => {
         this.processResponse(responses);
       })

@@ -78,7 +78,7 @@ export class CqlRunnerComponent {
     fhirServiceUri: 'http://fhirtest.uhn.ca/baseDstu3',
     termUser: 'user ID',
     termPass: 'password',
-    engineServiceUri: 'http://measure.eval.kanvix.com/cqf-ruler/cql/evaluate',
+    engineServiceUri: 'http://cql.dataphoria.org/cql/evaluate',
     engineUser: 'user ID',
     enginePass: 'password',
     dataServiceUri: 'http://fhirtest.uhn.ca/baseDstu3',
