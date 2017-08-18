@@ -75,13 +75,13 @@ export class CqlRunnerComponent {
 
   // TODO: Get these values from separate config file
   model = {
-    fhirServiceUri: 'http://fhirtest.uhn.ca/baseDstu3',
+    fhirServiceUri: 'http://measure.eval.kanvix.com/cqf-ruler/baseDstu3',
     termUser: 'user ID',
     termPass: 'password',
     engineServiceUri: 'http://cql.dataphoria.org/cql/evaluate',
     engineUser: 'user ID',
     enginePass: 'password',
-    dataServiceUri: 'http://fhirtest.uhn.ca/baseDstu3',
+    dataServiceUri: 'http://measure.eval.kanvix.com/cqf-ruler/baseDstu3',
     dataUser: 'user ID',
     dataPass: 'password',
     patientId: 'null'
