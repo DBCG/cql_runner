@@ -17,7 +17,7 @@ HTML-based Clinical Query Language (CQL) Runner
 
 - Allows you to run CQL commands against a pre-existing CQL Engine from the comfort of your own browser
 
-– Runs against the [CQL execution service](https://github.com/c-schuler/Cql_Engine/tree/master/Src/java/cql-execution-service) (feel free to point to the execution service in your own project)
+– Runs against the [CQL execution service](https://github.com/DBCG/cql_execution_service) (feel free to point to the execution service in your own project)
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version *webpack*.
 
