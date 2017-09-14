@@ -1,0 +1,77 @@
+:host {
+    font-family: 'Segoe UI', Helvetica, Tahoma, Geneva, Verdana, sans-serif;
+    height: 100%;
+}       
+
+.hidden {
+    display: none;
+}
+
+.noMargin {
+    margin: 0px !important;
+}
+
+.noPadding {
+    padding: 0px !important;
+} 
+
+.in {
+    color: #2f2f2f;            
+}
+
+button {
+    border: none;
+    color: white;
+    font-size: 1em;
+    height: 70px !important;
+    min-width: 70px;
+    outline: none;
+}
+
+button.run {
+    padding: 0px;
+}        
+
+button.clear {
+    padding: 5px 10px;
+    background-color: darkgrey;
+}
+
+.out {
+    color: #efefef;
+}
+
+.button.running {
+    background-color: darkgrey;
+}
+
+.button.running:hover {
+    cursor: default;
+}
+
+button:focus {
+    outline: 0;
+}       
+
+.run {
+    background-color: #4CAF50;
+}
+
+.input {
+    border-bottom: 1px solid #efefef;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    height: 70px !important;
+}
+
+.output {
+    background-color: #272822;
+    border-bottom: 1px solid #555651;
+    border-top: none;
+    border-right: none;
+    border-left: none;
+    border-radius: 0 !important;
+    -moz-border-radius: 0 !important;
+    height: 70px !important;        
+}

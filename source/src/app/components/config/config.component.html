@@ -1,0 +1,82 @@
+<ngb-tabset>
+    <ngb-tab title="Engine URL">
+        <template ngbTabContent>
+            <div class="select-engine pull-left">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <span>URL to CQL Execution Service:</span>
+                            <input type="text" class="form-control" id="engineUrl" (change)="setEngineEvent()" placeholder="{{engineURL}}">
+                        </div>
+                    </div>                            
+                </div>                        
+            </div>
+        </template>
+    </ngb-tab>
+    <ngb-tab title="Terminology URL">
+        <template ngbTabContent>                    
+            <div class="select-terminology pull-left">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <span>URL to the terminology service:</span>
+                            <input type="text" class="form-control" id="termUrl" (change)="setTermEvent()" placeholder="{{termURL}}">
+                        </div>                                
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <span>User Name:</span>
+                            <input type="text" class="form-control" id="termUser" (change)="setTermUserEvent()" placeholder="{{termUSER}}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <span>Password:</span>
+                            <input type="password" class="form-control" id="termPass" (change)="setTermPassEvent()" value="{{termPASS}}">
+                        </div> 
+                    </div>
+                </div>                        
+            </div>
+        </template>
+    </ngb-tab>
+    <ngb-tab title="Data URL">
+        <template ngbTabContent>                    
+            <div class="select-data pull-left">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <span>URL to FHIR resource provider:</span>
+                            <input type="text" class="form-control" id="dataUrl" (change)="setDataEvent()" placeholder="{{dataURL}}">
+                        </div>                                                                 
+                    </div>  
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <span>User Name:</span>
+                            <input type="text" class="form-control" id="dataUser" (change)="setDataUserEvent()" placeholder="{{dataUSER}}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <span>Password:</span>
+                            <input type="password" class="form-control" id="dataPass" (change)="setDataPassEvent()" value="{{dataPASS}}">
+                        </div> 
+                    </div>
+                </div>                        
+            </div>
+        </template>
+    </ngb-tab>
+    <ngb-tab title="Patient Info">
+        <template ngbTabContent>
+            <div class="select-patient pull-left">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <span>Unique Patient ID:</span>
+                            <input type="text" class="form-control" id="patientId" (change)="setPatientEvent()" placeholder="{{patientId}}">
+                        </div>
+                    </div>                            
+                </div>                        
+            </div>  
+        </template>
+    </ngb-tab>
+</ngb-tabset>

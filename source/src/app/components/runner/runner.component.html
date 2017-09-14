@@ -1,0 +1,59 @@
+<div class="container-fluid noPadding">
+    <div class="col-lg-6 noPadding">
+        <!--Input-->
+        <nav class="navbar navbar-default noMargin input">
+            <div class="navbar-text in">
+                <h4 class="self-center">Input</h4>
+            </div>
+            <div class="pull-right">
+                <button class="run" [class.running]="running" (click)="run()">
+                    <div class="self-center">
+                        Run
+                    </div>
+                    <i class="material-icons">play_arrow</i>
+                </button>
+            </div>
+        </nav>
+        <div class="noPadding">
+            <textarea cql-code-mirror 
+              [theme]="'eclipse'"
+              id="input">// Enter CQL scripts here and hit 'Run'\n</textarea>
+        </div>
+    </div>
+    <div class="col-lg-6 noPadding">
+      <nav class="navbar navbar-default noMargin output">
+          <div class="navbar-text out">
+              <h4 class="self-center">Output</h4>
+          </div>
+          <div class="pull-right">
+              <button class="clear" id="clearBtn" (click)="clear()">
+                  <div class="self-auto">
+                      Clear
+                  </div>
+                  <i class="material-icons" [hidden]="running">clear_all</i>
+              </button>
+          </div>
+      </nav>
+      <div class="noPadding">
+          <textarea cql-code-mirror 
+              [mode]="'textile'"
+              [lineNumbers]="false" 
+              [readOnly]="true" 
+              [ruler]="[{}]"
+              [styleActiveLine]="false"
+              id="output">// See results here</textarea>
+      </div> 
+    </div>
+</div>
+<div class="container-fluid">
+    <runner-config 
+        (engine)="setEngine($event)"
+        (term)="setTerm($event)"
+        (termUser)="setTermUser($event)"
+        (termPass)="setTermPass($event)"
+        (data)="setData($event)"
+        (dataUser)="setDataUser($event)"
+        (dataPass)="setDataPass($event)"
+        (patient)="setPatient($event)">
+    </runner-config>
+</div>

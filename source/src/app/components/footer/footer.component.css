@@ -1,0 +1,40 @@
+nav {
+    height: 28px !important;
+    min-height: 28px;
+    background-color: #2f2f2f;
+    border: none;
+}
+
+a {
+    color: white;
+}
+
+.nopadding {
+    padding: 0px;
+    margin: 0px;
+    height: 28px;
+}
+
+.issues {
+    padding-top: 3px;
+    width: 200px;
+}
+
+.issue {
+    padding-left: 10px;
+}
+
+.text {
+    padding-left: 5px;
+    padding-top: 3px;
+    color: white;
+}
+
+.button {
+    background-color: #2196F3;
+    border: none;
+    color: white;
+    font-size: 1em;
+    height: 28px;
+    text-align: center;
+}
