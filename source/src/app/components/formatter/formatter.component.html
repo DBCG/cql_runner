@@ -26,7 +26,7 @@
     <tr style="min-height: 500px;">
       <td>
         <div>
-          <textarea [type]="Type.input" cql-code-mirror [theme]="'eclipse'" id="editor">// Enter CQL scripts here and hit 'Format' </textarea>
+          <textarea [type]="EditorType.input" cql-code-mirror>// Enter CQL scripts here and hit 'Format' </textarea>
         </div>
       </td>
       <td align="center">
@@ -34,7 +34,7 @@
       </td>
       <td>
         <textarea cql-code-mirror
-          [type]="Type.output" [id]="'editor2'" [theme]="'eclipse'" [readOnly]="true" [rulers]="[{}]" id="editor2"></textarea>
+          [type]="EditorType.output"></textarea>
       </td>
     </tr>
   </tbody>

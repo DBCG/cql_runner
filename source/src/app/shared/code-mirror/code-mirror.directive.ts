@@ -3,7 +3,7 @@
 import { Directive, EventEmitter, Input, Output, AfterViewInit, ElementRef } from '@angular/core';
 import * as CodeMirror from 'codemirror';
 import 'codemirror/addon/mode/simple';
-import { Type } from './code-mirror.model';
+import { EditorType } from './code-mirror.model';
 
 // Add CQL as simple mode
 // Can potentially go with a full mode definition as we develop editor features
@@ -276,97 +276,81 @@ CodeMirror.defineSimpleMode('cql', {
   }
 });
 
+export interface ICodeMirrorConfig {
+  value?: string;
+  mode?: string;
+  theme?: string;
+  lineNumbers?: boolean;
+  readOnly?: boolean;
+  autoFocus?: boolean;
+  matchBrackets?: boolean;
+  autoCloseBrackets?: boolean;
+  styleActiveLine?: boolean;
+  rulers?: any;
+}
+export class CodeMirrorConfig implements ICodeMirrorConfig {
+  EditorType = EditorType;
+  value?: string;
+  mode = 'cql';
+  theme: string;
+  lineNumbers?: boolean;
+  readOnly?: boolean;
+  autoFocus?: boolean;
+  matchBrackets?: boolean;
+  autoCloseBrackets?: boolean;
+  styleActiveLine?: boolean;
+  rulers?: any;
+
+  constructor(_type: EditorType) {
+    if (_type == EditorType.input) {
+      this.value = '// Enter your CQL script here and press \'Run\'\n// The results are displayed in the console to the right\n';
+      this.lineNumbers = true;
+      this.readOnly = false;
+      this.autoFocus = true;
+      this.matchBrackets = true;
+      this.autoCloseBrackets = true;
+      this.styleActiveLine = true;
+      this.rulers = [{color: '#efefef', column: 70, lineStyle: 'solid'}];
+    } else {
+      this.readOnly = true;
+      this.theme = 'monokai';
+    }
+  }
+}
+
 @Directive ({
   selector: '[cql-code-mirror]'
 })
 export class CodeMirrorDirective implements AfterViewInit {
 
 
-  public _type: Type;
+  public _type: EditorType;
 
-  private _id = 'editor';
-  private _mode = 'cql';
-  private _theme = 'monokai';
-  private _value = '// Enter your CQL script here and press \'Run\'\n// The results are displayed in the console to the right\n';
-  private _lineNumbers = true;
-  private _readOnly = false;
-  private _rulers = [{color: '#efefef', column: 70, lineStyle: 'solid'}];
-  private _styleActiveLine = true;
+  // Defaults
+  private _config: ICodeMirrorConfig;
+  set value(value) {
+    this._config.value = value;
+    this.editor.setValue(value);
+  } 
+  
+  get value(): string {
+    const selection = this.editor.getSelection();
+    return selection.length > 0 ? selection : this.editor.getValue();
+  }
 
-  constructor(private _el: ElementRef) {}
+  constructor(private _el: ElementRef) { }
 
-  editor: any;
+  editor: CodeMirror.EditorFromTextArea;
 
   ngAfterViewInit() {
-    this.editor = CodeMirror.fromTextArea(this._el.nativeElement, {
-      value: this._value,
-      mode:  this._mode,
-      theme: this._theme,
-      lineNumbers: this._lineNumbers,
-      readOnly: this._readOnly,
-      autoFocus: true,
-      matchBrackets: true,
-      autoCloseBrackets: true,
-      styleActiveLine: this._styleActiveLine,
-      rulers: this._rulers
-    });
+    this._config = new CodeMirrorConfig(this._type);
+    this.editor = CodeMirror.fromTextArea(this._el.nativeElement, this._config);
   }
 
   @Input() set type(type) {
     this._type = type;
-  } get type(): Type {
+  } get type(): EditorType {
     return this._type;
-  }
-
-  // TODO: Fold into single, typed config
-
-  @Input() set id(id) {
-    this._id = id;
-  } get id(): string {
-    return this._id;
-  }
-
-  @Input() set mode(mode) {
-    this._mode = mode;
-  } get mode(): string {
-    return this._mode;
-  }
-
-  @Input() set theme(theme) {
-    this._theme = theme;
-  } get theme(): string {
-    return this._theme;
-  }
-
-  @Input() set value(value) {
-    this._value = value;
-    this.editor.setValue(value);
-  } get value(): string {
-    return this._value;
-  }
-
-  @Input() set lineNumbers(lineNumbers) {
-    this._lineNumbers = lineNumbers;
-  } get lineNumbers(): boolean {
-    return this._lineNumbers;
-  }
-
-  @Input() set readOnly(readOnly) {
-    this._readOnly = readOnly;
-  } get readOnly(): boolean {
-    return this._readOnly;
-  }
-
-  @Input() set styleActiveLine(styleActiveLine) {
-    this._styleActiveLine = styleActiveLine;
-  } get styleActiveLine(): boolean {
-    return this._styleActiveLine;
-  }
-
-  @Input() set rulers(rulers) {
-    this._rulers = rulers;
-  } get rulers(): any {
-    return this._rulers;
   }
   
 }

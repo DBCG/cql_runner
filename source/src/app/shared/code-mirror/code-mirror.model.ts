@@ -1,1 +1,1 @@
-export enum Type { input, output }
+export enum EditorType { input, output }

@@ -3,7 +3,7 @@ import { ApiService } from '../../shared/api/api.service';
 import * as CodeMirror from 'codemirror';
 import { Configuration } from '../config/config.model';
 import { CodeMirrorDirective } from '../../shared/code-mirror/code-mirror.directive';
-import { Type } from '../../shared/code-mirror/code-mirror.model';
+import { EditorType } from '../../shared/code-mirror/code-mirror.model';
 
 @Component ({
   selector: 'cql-runner',
@@ -15,11 +15,12 @@ import { Type } from '../../shared/code-mirror/code-mirror.model';
 export class RunnerComponent {
 
 
-  Type = Type;
-  @ViewChildren(CodeMirrorDirective) codeMirrors: QueryList<CodeMirrorDirective>;
+  EditorType = EditorType;
+  @ViewChildren(CodeMirrorDirective) codeEditors: QueryList<CodeMirrorDirective>;
   error = '';
   running = false;
-  private _config: Configuration;
+  // TODO: Implement new configuration Component
+  private _config = new Configuration();
   oValue: string;
 
   constructor (private _apiService: ApiService) {}
@@ -28,10 +29,11 @@ export class RunnerComponent {
     this.clear();
     if (!this.running) {
       this.running = true;
-      let input = this.codeMirrors.find((mirror)=> { return mirror._type === Type.input });
-      this._config = {
-        value: input.value
-      };
+      let input = this.codeEditors.find((mirror)=> { return mirror._type === EditorType.input });
+      // this._config = {
+      //   value: input.value
+      // };
+      this._config.value = input.value;
       this._apiService.post(this._config)
         .then(responses => {
           this.processResponses(responses);
@@ -90,12 +92,12 @@ export class RunnerComponent {
 
   clear() {
     this.oValue = '';
-    let output = this.codeMirrors.find((mirror)=> { return mirror.type === Type.output });
+    let output = this.codeEditors.find((mirror)=> { return mirror.type === EditorType.output });
     output.value = '';
   }
 
   private updateOutput() {
-    let output = this.codeMirrors.find((mirror)=> { return mirror.type === Type.output });
+    let output = this.codeEditors.find((mirror)=> { return mirror.type === EditorType.output });
     output.value = this.oValue;
   }
 }

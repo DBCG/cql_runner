@@ -14,10 +14,7 @@
             </button>
         </nav>
         <div>
-            <textarea cql-code-mirror 
-                [type]="Type.input"
-                [theme]="'eclipse'"
-                id="input">// Enter CQL scripts here and hit 'Run'\n</textarea>
+            <textarea cql-code-mirror [type]="EditorType.input">// Enter CQL scripts here and hit 'Run'\n</textarea>
         </div>
     </div>
     <div fxFlex="50%">
@@ -33,14 +30,7 @@
             </button>
       </nav>
       <div>
-          <textarea cql-code-mirror
-            [type]="Type.output"
-            [mode]="'textile'"
-            [lineNumbers]="false" 
-            [readOnly]="true" 
-            [rulers]="[{}]"
-            [styleActiveLine]="false"
-            id="output">// See results here</textarea>
+          <textarea cql-code-mirror [type]="EditorType.output">// See results here</textarea>
       </div> 
     </div>
 </div>

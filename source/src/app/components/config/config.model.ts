@@ -1,4 +1,6 @@
-export interface Configuration {
+import { environment } from '../../../environments/environment';
+
+export interface IConfiguration {
     value?: string; // value of user input
     engineUri?: string; // engine endpoint
     fhirUri?: string; // fhir server endpoint
@@ -11,4 +13,19 @@ export interface Configuration {
     dataSourceUsername?: string; // dataSource username
     dataSourcePassword?: string; // dataSource password
     patientId?: string; // Id of patient in context
+}
+
+export class Configuration implements IConfiguration {
+    value: string;
+    engineUri = environment.engineUri;
+    fhirUri: string;
+    fhirUsername: string;
+    fhirPassword: string;
+    terminologyUri = environment.terminologyUri;
+    terminologyUsername: string;
+    terminologyPassword: string;
+    dataSourceUri = environment.dataSourceUri;
+    dataSourceUsername: string;
+    dataSourcePassword: string;
+    patientId = 'Null';
 }

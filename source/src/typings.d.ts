@@ -26,6 +26,9 @@ declare module 'codemirror' {
     interface simpleMode {
       (config: string, states: any): any
     }
+    interface EditorFromTextArea extends Editor {
+      getSelection(lineSep?: string): string; 
+    }
 }
 
 export = CodeMirror;
