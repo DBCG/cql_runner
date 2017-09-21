@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChildren, QueryList } from '@angular/core';
 import { ApiService } from '../../shared/api/api.service';
-
-declare let CodeMirror:any;
-declare let $: any;
+import * as CodeMirror from 'codemirror';
+import { Configuration } from '../config/config.model';
+import { CodeMirrorDirective } from '../../shared/code-mirror/code-mirror.directive';
+import { Type } from '../../shared/code-mirror/code-mirror.model';
 
 @Component ({
   selector: 'cql-runner',
@@ -13,23 +14,13 @@ declare let $: any;
 
 export class RunnerComponent {
 
-  input: any = CodeMirror(document.getElementById("editor"));
+
+  Type = Type;
+  @ViewChildren(CodeMirrorDirective) codeMirrors: QueryList<CodeMirrorDirective>;
   error = '';
   running = false;
-  // TODO: Get these values from separate config file
-  model = {
-    fhirServiceUri: 'http://measure.eval.kanvix.com/cqf-ruler/baseDstu3',
-    termUser: 'user ID',
-    termPass: 'password',
-    engineServiceUri: 'http://cql.dataphoria.org/cql/evaluate',
-    engineUser: 'user ID',
-    enginePass: 'password',
-    dataServiceUri: 'http://measure.eval.kanvix.com/cqf-ruler/baseDstu3',
-    dataUser: 'user ID',
-    dataPass: 'password',
-    patientId: 'null'
-  };
-  oText: string;
+  private _config: Configuration;
+  oValue: string;
 
   constructor (private _apiService: ApiService) {}
 
@@ -37,53 +28,29 @@ export class RunnerComponent {
     this.clear();
     if (!this.running) {
       this.running = true;
-      this.runClassChange();
-      //noinspection TypeScriptUnresolvedFunction
-      this._apiService.post(
-        $('.CodeMirror')[0].CodeMirror.getValue(),
-        this.model.engineServiceUri,
-        this.model.engineUser,
-        this.model.enginePass,
-        this.model.fhirServiceUri,
-        this.model.termUser,
-        this.model.termPass,
-        this.model.dataServiceUri,
-        this.model.dataUser,
-        this.model.dataPass,
-        this.model.patientId
-      )
+      let input = this.codeMirrors.find((mirror)=> { return mirror._type === Type.input });
+      this._config = {
+        value: input.value
+      };
+      this._apiService.post(this._config)
         .then(responses => {
           this.processResponses(responses);
           this.running = false;
-          this.runningClassChange();
         })
         .catch(error => {
           this.error = error;
           this.running = false;
-          this.runningClassChange();
-          this.oText += '>> Engine Service call failed: ' + error + '\n';
-          this.displayOutput();
+          this.oValue += '>> Engine Service call failed: ' + error + '\n';
+          this.updateOutput();
         });
     }
-  }
-
-  runClassChange () {
-    $('.run div').text('Running..');
-    $('.run i').addClass('hidden');
-    $('.run').attr('class', 'running');
-  }
-
-  runningClassChange () {
-    $('.running div').text('Run');
-    $('.running i').removeClass('hidden');
-    $('.running').attr('class', 'run');
   }
 
   // Tacks on line numbers from the given string location
   private getNumberedResponses(responses: any) {
     for (let response of responses) {
       if (!response['translation-error'] && !response['error']) {
-        response.line = parseInt(response.location.substring(response.location.indexOf("[")+1, response.location.indexOf(":")));
+        response.line = parseInt(response.location.substring(response.location.indexOf('[')+1, response.location.indexOf(':')));
       }
     }
     return responses;
@@ -97,66 +64,39 @@ export class RunnerComponent {
       return a.line == b.line ? 0 : +(a.line > b.line) || -1;
     });
 
-    this.oText += '\n';
+    this.oValue += '\n';
 
     for (let response of responses) {
       // Invalid expression – could not translate
       if (response['translation-error']) {
-        this.oText += '>> Translation Error: ' + response['translation-error'] + '\n';
+        this.oValue += '>> Translation Error: ' + response['translation-error'] + '\n';
       }
       // Invalid expression – error with named expression
       if (response['error']) {
-        this.oText += '>> Error: ' + response['error'] + '\n';
+        this.oValue += '>> Error: ' + response['error'] + '\n';
       }
       // Valid expression
       if (response['result']) {
-        this.oText += '>> ' + response['name'] + ' ' + response.location + ' ' + response.result + '\n';
+        this.oValue += '>> ' + response['name'] + ' ' + response.location + ' ' + response.result + '\n';
       }
     }
 
-    this.displayOutput();
+    this.updateOutput();
   }
 
-  setEngine(event) {
-    this.model.engineServiceUri = event;
-  }
-
-  setTerm(event) {
-    this.model.fhirServiceUri = event;
-  }
-
-  setTermUser(event) {
-    this.model.termUser = event;
-  }
-
-  setTermPass(event) {
-    this.model.termPass = event;
-  }
-
-  setData(event) {
-    this.model.dataServiceUri = event;
-  }
-
-  setDataUser(event) {
-    this.model.dataUser = event;
-  }
-
-  setDataPass(event) {
-    this.model.dataPass = event;
-  }
-
-  setPatient(event) {
-    this.model.patientId = event;
+  setConfig(config: Configuration) {
+    this._config = config;
   }
 
   clear() {
-    this.oText = '';
-    let output = $('.CodeMirror')[1].CodeMirror;
-    output.setValue("");
+    this.oValue = '';
+    let output = this.codeMirrors.find((mirror)=> { return mirror.type === Type.output });
+    output.value = '';
   }
 
-  displayOutput() {
-    $('.CodeMirror')[1].CodeMirror.setValue(this.oText);
+  private updateOutput() {
+    let output = this.codeMirrors.find((mirror)=> { return mirror.type === Type.output });
+    output.value = this.oValue;
   }
 }
 

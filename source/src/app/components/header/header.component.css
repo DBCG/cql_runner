@@ -1,19 +1,9 @@
-
-span {
-    display: inline-block;
-    vertical-align: middle;
-    line-height: normal;  
+.resources-header {
+    text-align: center;
+    width: 100%;
 }
 
-i {
-    padding-top: 3px;
-}
-
-.resLink {
-    padding-bottom: 4px;
-}
-
-.resources {
+.resources-header, .resources {
     background-color: #2196F3;
     color: white;
 }
@@ -31,18 +21,15 @@ i {
 }
 
 .resources a {
-    color: white;
+    text-decoration: none;
+    color: #fff;
 }
 
 .resources a:hover {
-    color: #fdfdfd;
+    text-decoration: underline;
 }
 
-[hidden] {
-    display: none;
-}
-
-.navbar-static-top {
+nav {
     min-height: 28px !important;
     height: 28px;
     color: white;
@@ -52,22 +39,26 @@ i {
 }
 
 .title {            
-    font-weight: 600;
     padding-left: 5px;
-    padding-top: 3px;
-    max-width: 200px;
-    min-height: 28px !important;
 }
 
-#header .button {
+.logo {
+    width: 1rem;
+    margin-right: 1rem;
+}
+
+button {
     background-color: #2196F3;
-    border: none;
     color: white;
-    font-size: 1em;
-    height: 28px;
     width: 200px;
+    height: 100%;
 }
 
-#header .button:hover {
-    cursor: pointer;
+button:hover {
+    text-decoration: underline;
+}
+
+.icon {
+    font-size: 1rem;
+    margin-left: 0.5rem;
 }

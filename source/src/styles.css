@@ -1,5 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import "https://fonts.googleapis.com/icon?family=Material+Icons";
+
+body {
+  margin: 0;
+}
 
 .CodeMirror-linenumber {
   text-align: center !important;
@@ -21,4 +24,20 @@ body {
 table {
   table-layout: fixed;
   word-wrap: break-word;
+}
+
+button {
+  cursor: pointer;
+  font-size: 1rem;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+.hidden {
+  display: none !important;
 }

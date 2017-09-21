@@ -13,27 +13,28 @@
                   <!--[id]="'editor2'"-->
                   <!--[theme]="'eclipse'"-->
                   <!--[readOnly]="true"-->
-                  <!--[ruler]="[{}]"-->
+                  <!--[rulers]="[{}]"-->
                   <!--[styleActiveLine]="false"-->
                   <!--id="editor2">// See results here-->
         <!--</textarea>-->
     <!--</div>-->
   <!--</div>-->
 <!--</div>-->
-
+<!-- TODO: Rework -->
 <table class="table" style="min-height: 600px;">
   <tbody>
     <tr style="min-height: 500px;">
-      <td class="col-md-5">
+      <td>
         <div>
-          <textarea cql-code-mirror [theme]="'eclipse'" id="editor">// Enter CQL scripts here and hit 'Format' </textarea>
+          <textarea [type]="Type.input" cql-code-mirror [theme]="'eclipse'" id="editor">// Enter CQL scripts here and hit 'Format' </textarea>
         </div>
       </td>
-      <td align="center" class="col-md-2" style="vertical-align: middle;">
+      <td align="center">
         <button type="button" class="btn-lg btn-block btn-success align-middle" style="border: none;" (click)="format()">Format >></button>
       </td>
-      <td class="col-md-5">
-        <textarea cql-code-mirror [id]="'editor2'" [theme]="'eclipse'" [readOnly]="true" [ruler]="[{}]" id="editor2"></textarea>
+      <td>
+        <textarea cql-code-mirror
+          [type]="Type.output" [id]="'editor2'" [theme]="'eclipse'" [readOnly]="true" [rulers]="[{}]" id="editor2"></textarea>
       </td>
     </tr>
   </tbody>

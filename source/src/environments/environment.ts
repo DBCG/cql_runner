@@ -4,5 +4,8 @@
 // The list of which env maps to which file can be found in `.angular-cli.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  engineUri: 'http://cql.dataphoria.org/cql/evaluate',
+  terminologyUri: 'http://measure.eval.kanvix.com/cqf-ruler/baseDstu3',
+  dataSourceUri: 'http://measure.eval.kanvix.com/cqf-ruler/baseDstu3'
 };

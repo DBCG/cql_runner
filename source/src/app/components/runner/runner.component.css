@@ -1,60 +1,68 @@
 :host {
     font-family: 'Segoe UI', Helvetica, Tahoma, Geneva, Verdana, sans-serif;
     height: 100%;
-}       
-
-.hidden {
-    display: none;
 }
 
-.noMargin {
-    margin: 0px !important;
+.runner {
+    border-bottom: 1px solid #efefef
 }
 
-.noPadding {
-    padding: 0px !important;
-} 
+h4 {
+    -webkit-margin-before: 0;
+    -webkit-margin-after: 0;
+}
 
 .in {
-    color: #2f2f2f;            
+    color: #2f2f2f;
+    padding-left: 0.5rem;             
 }
 
 button {
     border: none;
     color: white;
     font-size: 1em;
-    height: 70px !important;
-    min-width: 70px;
+    height: 100%;
+    width: 3.5rem;
     outline: none;
 }
 
 button.run {
-    padding: 0px;
+    padding: 0.1rem 0rem;
 }        
 
 button.clear {
-    padding: 5px 10px;
-    background-color: darkgrey;
+    padding: 0.1rem 0rem;
+    background-color: #424242;
 }
 
 .out {
     color: #efefef;
+    padding-left: 0.5rem;
 }
 
-.button.running {
-    background-color: darkgrey;
+button.running {
+    background-color: #424242;
 }
 
-.button.running:hover {
+button.running:hover {
     cursor: default;
-}
+    }
 
 button:focus {
     outline: 0;
 }       
 
+.icon {
+    font-size: 1rem;
+}
+
 .run {
     background-color: #4CAF50;
+    font-size: 0.8rem;
+}
+
+.clear {
+    font-size: 0.8rem;
 }
 
 .input {
@@ -62,7 +70,7 @@ button:focus {
     border-top: none;
     border-right: none;
     border-left: none;
-    height: 70px !important;
+    background-color: #f7f7f7;
 }
 
 .output {
@@ -72,6 +80,5 @@ button:focus {
     border-right: none;
     border-left: none;
     border-radius: 0 !important;
-    -moz-border-radius: 0 !important;
-    height: 70px !important;        
+    -moz-border-radius: 0 !important;    
 }
