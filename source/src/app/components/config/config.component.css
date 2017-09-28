@@ -21,6 +21,11 @@
     background-color: #2f2f2f;
 }
 
+.parameters .description {
+    font-size: 0.8rem;
+    margin-left: 3rem;
+}
+
 .icon {
     font-size: 1rem;
     color: #FDD835;

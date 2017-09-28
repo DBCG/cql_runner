@@ -21,7 +21,10 @@
         </div>
         <mat-card class="parameters">
             <div class="header" fxLayout fxLayoutAlign="space-between center">
-                <div>Parameters (optional)</div>
+                <div>
+                    <span class="title">Parameters (optional)</span>
+                    <span *ngIf="!isParametersOpen" class="description">Click the button on the right to show your configuration parameters</span>
+                </div>
                 <button class="toggle" mat-fab (click)="toggleParametersOpen()">
                     <i class="material-icons" *ngIf="isParametersOpen">keyboard_arrow_down</i>
                     <i class="material-icons" *ngIf="!isParametersOpen">keyboard_arrow_up</i>
