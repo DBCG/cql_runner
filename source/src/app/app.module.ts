@@ -1,8 +1,13 @@
+
+import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material'; // Strip out once they fix
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { MatButtonModule, MatInputModule, MatAutocompleteModule, MatCardModule, MatTooltipModule } from '@angular/material';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { RunnerComponent } from './components/runner/runner.component';
@@ -29,9 +34,17 @@ import { routing } from './app.routes';
     FormsModule,
     HttpModule,
     FlexLayoutModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatInputModule,
+    MatAutocompleteModule,
+    MatCardModule,
+    MatTooltipModule,
     routing
   ],
-  providers: [],
+  providers: [
+    { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true } // Strip out once they fix
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

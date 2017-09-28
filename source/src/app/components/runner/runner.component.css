@@ -4,7 +4,10 @@
 }
 
 .runner {
-    border-bottom: 1px solid #efefef
+    border-top: 10px solid #2f2f2f;
+    border-bottom: 10px solid #424242;
+    box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
+    -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
 }
 
 h4 {
@@ -14,16 +17,17 @@ h4 {
 
 .in {
     color: #2f2f2f;
-    padding-left: 0.5rem;             
+    padding-left: 1.5rem;             
 }
 
 button {
     border: none;
     color: white;
-    font-size: 1em;
+    /* font-size: 1em; */
     height: 100%;
     width: 3.5rem;
     outline: none;
+    border-radius: 0;
 }
 
 button.run {
@@ -37,7 +41,7 @@ button.clear {
 
 .out {
     color: #efefef;
-    padding-left: 0.5rem;
+    padding-left: 1.5rem;
 }
 
 button.running {
@@ -53,7 +57,7 @@ button:focus {
 }       
 
 .icon {
-    font-size: 1rem;
+    /* font-size: 1rem; */
 }
 
 .run {
@@ -63,6 +67,10 @@ button:focus {
 
 .clear {
     font-size: 0.8rem;
+}
+
+.clear.running {
+    opacity: 0;
 }
 
 .input {

@@ -1,3 +1,4 @@
+<cql-config (config)="setConfig($event)"></cql-config>
 <div fxLayout="row" class="runner">
     <div fxFlex="50%">
         <!--Input-->
@@ -5,7 +6,7 @@
             <div class="in" fxLayout fxLayoutAlign="center center">
                 <h4>Input</h4>
             </div>
-            <button class="run" [class.running]="running" (click)="run()" fxLayout="column" fxLayoutAlign="center center">
+            <button class="run" [class.running]="running" (click)="run()" fxLayout="column" fxLayoutAlign="center center" mat-raised-button>
                 <i class="material-icons icon" *ngIf="!running">play_arrow</i>
                 <i class="material-icons icon" *ngIf="running">hourglass_full</i>
                 <div>
@@ -22,8 +23,8 @@
           <div class="out" fxLayout fxLayoutAlign="center center">
               <h4>Output</h4>
           </div>
-            <button class="clear" id="clearBtn" (click)="clear()" fxLayout="column" fxLayoutAlign="center center">
-                <i class="material-icons icon" [hidden]="running">clear_all</i>
+            <button class="clear" [class.running]="running" id="clearBtn" (click)="clear()" fxLayout="column" fxLayoutAlign="center center" mat-raised-button>
+                <i class="material-icons icon">clear_all</i>
                 <div>
                     Clear
                 </div>
@@ -33,7 +34,4 @@
           <textarea cql-code-mirror [type]="EditorType.output">// See results here</textarea>
       </div> 
     </div>
-</div>
-<div>
-    <cql-config (config)="setConfig($event)"></cql-config>
 </div>

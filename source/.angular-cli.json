@@ -20,6 +20,7 @@
       "prefix": "cql",
       "styles": [
         "styles.css",
+        "material.css",
         "../node_modules/codemirror/lib/codemirror.css",
         "../node_modules/codemirror/theme/monokai.css",
         "../node_modules/codemirror/theme/eclipse.css",

@@ -17,10 +17,6 @@ body {
   font-size: 12px !important;
 }
 
-body {
-  padding-bottom: 35px;
-}
-
 table {
   table-layout: fixed;
   word-wrap: break-word;
@@ -41,3 +37,6 @@ button {
 .hidden {
   display: none !important;
 }
+
+
+

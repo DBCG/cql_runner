@@ -1,4 +1,4 @@
-<div>
+<div class="header">
     <nav class="navbar navbar-default navbar-static-top" fxLayout fxLayoutAlign="space-between stretch">
         <div class="title" fxLayout fxLayoutAlign="start center">
             <img src="./assets/icons/search-engine.svg" alt="CQL Logo" class="logo"/>
@@ -6,7 +6,7 @@
         </div>
         <button (click)="toggleResources()" fxLayout fxLayoutAlign="start stretch">
             <div class="resources-header">CQL Resources <i class="material-icons icon">library_books</i></div>
-        </button>                 
+        </button>               
     </nav>
     <div class="resources" [hidden]="!resources">
         <ul>

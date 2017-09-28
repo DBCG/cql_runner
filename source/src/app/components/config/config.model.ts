@@ -18,7 +18,7 @@ export interface IConfiguration {
 export class Configuration implements IConfiguration {
     value: string;
     engineUri = environment.engineUri;
-    fhirUri: string;
+    fhirUri = environment.fhirUri;
     fhirUsername: string;
     fhirPassword: string;
     terminologyUri = environment.terminologyUri;
@@ -27,5 +27,5 @@ export class Configuration implements IConfiguration {
     dataSourceUri = environment.dataSourceUri;
     dataSourceUsername: string;
     dataSourcePassword: string;
-    patientId = 'Null';
+    patientId: string;
 }
