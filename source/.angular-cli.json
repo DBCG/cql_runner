@@ -27,7 +27,6 @@
         "../node_modules/material-design-icons/iconfont/material-icons.css"
       ],
       "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js",
         "../node_modules/codemirror/lib/codemirror.js",
         "../node_modules/codemirror/addon/edit/matchbrackets.js",
         "../node_modules/codemirror/addon/edit/closebrackets.js",
