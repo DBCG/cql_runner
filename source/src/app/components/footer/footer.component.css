@@ -10,9 +10,10 @@
     padding-left: 24px;
 }
 
-a {
-    color: white;
+.description a {
+    color: #e91e63;
 }
+
 
 .icon {
     text-decoration: none;

@@ -4,7 +4,6 @@
 }
 
 .group .title {
-    text-align: center;
     padding: 0.25rem;
     font-weight: 700;
 }
@@ -21,9 +20,10 @@
     background-color: #2f2f2f;
 }
 
-.parameters .description {
+.parameters .description a {
     font-size: 0.8rem;
-    margin-left: 3rem;
+    padding: 0.25rem;
+    color: #e91e63;
 }
 
 .icon {
