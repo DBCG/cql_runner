@@ -1,0 +1,23 @@
+/* Material design overrides and imports */
+
+@import '~@angular/material/prebuilt-themes/pink-bluegrey.css';
+
+.mat-form-field {
+  width: 100%;
+  font-family: 'Segoe UI', Helvetica, Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 1rem;
+}
+
+.mat-input-element {
+  font-size: 0.8rem !important; 
+}
+
+.mat-option {
+  font-family: 'Segoe UI', Helvetica, Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 0.8rem !important;
+}
+
+.mat-card {
+  font-family: 'Segoe UI', Helvetica, Tahoma, Geneva, Verdana, sans-serif;
+  border-radius: 0 !important;
+}

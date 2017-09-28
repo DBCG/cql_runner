@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewChildren, QueryList } from '@angular/core';
 import { ApiService } from '../../shared/api/api.service';
+import { Configuration } from '../config/config.model';
+import { CodeMirrorDirective } from '../../shared/code-mirror/code-mirror.directive';
+import { EditorType } from '../../shared/code-mirror/code-mirror.model';
 
 declare let CodeMirror:any;
-declare let $: any;
 
 @Component({
   selector: 'cql-formatter',
@@ -10,17 +12,20 @@ declare let $: any;
   styleUrls: ['./formatter.component.css'],
   providers: [ ApiService ]
 })
-export class FormatterComponent implements OnInit {
+export class FormatterComponent {
+
+  EditorType = EditorType;
+  @ViewChildren(CodeMirrorDirective) codeEditors: QueryList<CodeMirrorDirective>;
 
   output: string = 'Error formatting CQL code';
 
   constructor(private _apiService: ApiService) { }
 
-  ngOnInit() {
-  }
-
   format() {
-    this._apiService.post($('.CodeMirror')[0].CodeMirror.getValue(), 'http://cql.dataphoria.org/cql/format', null, null, null, null, null, null, null, null, null)
+    let input = this.codeEditors.find((mirror)=> { return mirror._type === EditorType.input });
+    let config = new Configuration();
+    config.value = input.value;
+    this._apiService.post(config)
       .then(responses => {
         this.processResponse(responses);
       })
@@ -41,6 +46,7 @@ export class FormatterComponent implements OnInit {
   }
 
   displayOutput() {
-    $('.CodeMirror')[1].CodeMirror.setValue(this.output);
+    let input = this.codeEditors.find((mirror)=> { return mirror._type === EditorType.input });
+    input.value = this.output;
   }
 }

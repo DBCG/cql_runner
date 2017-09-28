@@ -1,82 +1,154 @@
-<ngb-tabset>
-    <ngb-tab title="Engine URL">
-        <template ngbTabContent>
-            <div class="select-engine pull-left">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <span>URL to CQL Execution Service:</span>
-                            <input type="text" class="form-control" id="engineUrl" (change)="setEngineEvent()" placeholder="{{engineURL}}">
-                        </div>
-                    </div>                            
-                </div>                        
+<mat-card class="config" fxLayout>
+    <div fxFlex="75%" class="content">
+        <div class="group engine" fxLayout fxLayoutAlign="center start">
+            <div class="title" fxLayout fxLayoutAlign="start center" fxFlex="33.33%">
+                <div>CQL Engine</div>
+                <span matTooltip="The CQL engine that runs our code"><i class="material-icons icon">info</i></span>
             </div>
-        </template>
-    </ngb-tab>
-    <ngb-tab title="Terminology URL">
-        <template ngbTabContent>                    
-            <div class="select-terminology pull-left">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <span>URL to the terminology service:</span>
-                            <input type="text" class="form-control" id="termUrl" (change)="setTermEvent()" placeholder="{{termURL}}">
-                        </div>                                
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <span>User Name:</span>
-                            <input type="text" class="form-control" id="termUser" (change)="setTermUserEvent()" placeholder="{{termUSER}}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <span>Password:</span>
-                            <input type="password" class="form-control" id="termPass" (change)="setTermPassEvent()" value="{{termPASS}}">
-                        </div> 
-                    </div>
-                </div>                        
+            <div class="items" fxFlex>
+                <div class="item">
+                    <mat-form-field>
+                        <i matPrefix matTooltip="URL" class="material-icons icon">link</i>
+                        <input type="text" #engineUrl matInput required [(ngModel)]="config.engineUri" [matAutocomplete]="engineUrlAuto" aria-label="Engine Endpoint Url"/>
+                    </mat-form-field>
+                    <mat-autocomplete #engineUrlAuto="matAutocomplete">
+                        <mat-option *ngFor="let option of engineUrlOptions" [value]="option">
+                            {{ option }}
+                        </mat-option>
+                    </mat-autocomplete>
+                </div>
             </div>
-        </template>
-    </ngb-tab>
-    <ngb-tab title="Data URL">
-        <template ngbTabContent>                    
-            <div class="select-data pull-left">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <span>URL to FHIR resource provider:</span>
-                            <input type="text" class="form-control" id="dataUrl" (change)="setDataEvent()" placeholder="{{dataURL}}">
-                        </div>                                                                 
-                    </div>  
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <span>User Name:</span>
-                            <input type="text" class="form-control" id="dataUser" (change)="setDataUserEvent()" placeholder="{{dataUSER}}">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <span>Password:</span>
-                            <input type="password" class="form-control" id="dataPass" (change)="setDataPassEvent()" value="{{dataPASS}}">
-                        </div> 
-                    </div>
-                </div>                        
+        </div>
+        <mat-card class="parameters">
+            <div class="header" fxLayout fxLayoutAlign="space-between center">
+                <div>
+                    <span class="title">Parameters (optional)</span>
+                    <span *ngIf="!isParametersOpen" class="description">Click the button on the right to show your configuration parameters</span>
+                </div>
+                <button class="toggle" mat-fab (click)="toggleParametersOpen()">
+                    <i class="material-icons" *ngIf="isParametersOpen">keyboard_arrow_down</i>
+                    <i class="material-icons" *ngIf="!isParametersOpen">keyboard_arrow_up</i>
+                </button>
             </div>
-        </template>
-    </ngb-tab>
-    <ngb-tab title="Patient Info">
-        <template ngbTabContent>
-            <div class="select-patient pull-left">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-lg-4">
-                            <span>Unique Patient ID:</span>
-                            <input type="text" class="form-control" id="patientId" (change)="setPatientEvent()" placeholder="{{patientId}}">
-                        </div>
-                    </div>                            
-                </div>                        
-            </div>  
-        </template>
-    </ngb-tab>
-</ngb-tabset>
+            <div class="group" fxLayout fxLayoutAlign="center start" *ngIf="isParametersOpen">
+                <div fxFlex="33.33%">
+                    <div class="title">
+                        <span>FHIR Server</span>
+                        <span matTooltip="The FHIR server"><i class="material-icons icon">info</i></span>
+                    </div>
+                    <div class="description" >
+                        <a href="http://wiki.hl7.org/index.php?title=Publicly_Available_FHIR_Servers_for_testing" target="_blank">More details</a>
+                    </div>    
+                </div>
+                <div class="items" fxFlex>
+                    <div class="item">
+                        <mat-form-field>
+                            <i matPrefix matTooltip="URI" class="material-icons icon">link</i>
+                            <input type="text" #fhirUrl matInput [(ngModel)]="config.fhirUri" [matAutocomplete]="fhirUrlAuto" placeholder="FHIR Server URL" aria-label="FHIR Server Url">
+                        </mat-form-field>
+                        <mat-autocomplete #fhirUrlAuto="matAutocomplete">
+                            <mat-option *ngFor="let option of fhirUrlOptions" [value]="option">
+                                {{ option }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                    <div class="item">
+                        <mat-form-field>
+                            <i matPrefix matTooltip="Username" class="material-icons icon">person</i>
+                            <input type="text" matInput [(ngModel)]="config.fhirUsername" placeholder="FHIR Username" aria-label="FHIR Username">
+                        </mat-form-field>
+                    </div>
+                    <div class="item">
+                        <mat-form-field>
+                            <i matPrefix matTooltip="Password" class="material-icons icon">vpn_key</i>
+                            <input type="password" matInput [(ngModel)]="config.fhirPassword" placeholder="FHIR Password" aria-label="FHIR Password">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="group" fxLayout fxLayoutAlign="center start" *ngIf="isParametersOpen">
+                <div class="title" fxLayout fxLayoutAlign="start center" fxFlex="33.33%">
+                    <div>Terminology Service</div>
+                    <span matTooltip="Terminology Service URI"><i class="material-icons icon">info</i></span>
+                </div>
+                <div class="items" fxFlex>
+                    <div class="item">
+                        <mat-form-field>
+                            <i matPrefix matTooltip="URI" class="material-icons icon">link</i>
+                            <input type="text" #terminologyUrl matInput [(ngModel)]="config.terminologyUri" [matAutocomplete]="terminologyUrlAuto" placeholder="Terminology Service URL" aria-label="Terminology Service URL">
+                        </mat-form-field>
+                        <mat-autocomplete #terminologyUrlAuto="matAutocomplete">
+                            <mat-option *ngFor="let option of terminologyUrlOptions" [value]="option">
+                                {{ option }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                    <div class="item">
+                        <mat-form-field>
+                            <i matPrefix matTooltip="Username" matTooltip="Username" class="material-icons icon">person</i>
+                            <input type="text" matInput [(ngModel)]="config.terminologyUsername" placeholder="Terminology Username" aria-label="Terminology Username">
+                        </mat-form-field>
+                    </div>
+                    <div class="item">
+                        <mat-form-field>
+                            <i matPrefix matTooltip="Password" matTooltip="Password" class="material-icons icon">vpn_key</i>
+                            <input type="password" matInput [(ngModel)]="config.terminologyPassword" placeholder="Terminology Password" aria-label="Terminology Password">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="group" fxLayout fxLayoutAlign="center start" *ngIf="isParametersOpen">
+                <div class="title" fxLayout fxLayoutAlign="start center" fxFlex="33.33%">
+                    <div>Source Data</div>
+                    <span matTooltip="Source data for queries"><i class="material-icons icon">info</i></span>
+                </div>
+                <div class="items" fxFlex>
+                    <div class="item">
+                        <mat-form-field>
+                            <i matPrefix matTooltip="URI" class="material-icons icon">link</i>
+                            <input #dataSourceUrl type="text" matInput [(ngModel)]="config.dataSourceUri" [matAutocomplete]="dataSourceUrlAuto" placeholder="Data Source URL" aria-label="Data Source URL">
+                        </mat-form-field>
+                        <mat-autocomplete #dataSourceUrlAuto="matAutocomplete">
+                            <mat-option *ngFor="let option of dataSourceUrlOptions" [value]="option">
+                                {{ option }}
+                            </mat-option>
+                        </mat-autocomplete>
+                    </div>
+                    <div class="item">
+                        <mat-form-field>
+                            <i matPrefix matTooltip="Username" class="material-icons icon">person</i>
+                            <input type="text" matInput [(ngModel)]="config.dataSourceUsername" placeholder="Source Data Username" aria-label="Source Data Username">
+                        </mat-form-field>
+                    </div>
+                    <div class="item">
+                        <mat-form-field>
+                            <i matPrefix matTooltip="Password" class="material-icons icon">vpn_key</i>
+                            <input type="password" matInput [(ngModel)]="config.dataSourcePassword" placeholder="Source Data Password" aria-label="Source Data Password">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+            <div class="group" fxLayout fxLayoutAlign="center start" *ngIf="isParametersOpen">
+                <div class="title" fxLayout fxLayoutAlign="start center" fxFlex="33.33%">
+                    <div>Patient Id</div>
+                    <span matTooltip="Patient context"><i class="material-icons icon">info</i></span>
+                </div>
+                <div class="items" fxFlex>
+                    <div class="item">
+                        <mat-form-field>
+                            <i matPrefix matTooltip="Id" class="material-icons icon">assignment_ind</i>
+                            <input #patientId type="text" matInput [(ngModel)]="config.patientId" placeholder="Patient Id" aria-label="Patient Id">
+                        </mat-form-field>
+                    </div>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+    <div class="guide" fxFlex fxLayout="column" fxLayoutAlign="center center">
+        <div class="title">Configuration</div>
+        <div class="body">
+            Use the configuration to the left to set up your CQL query environment<br><br>
+            Once you have your environment ready, author and run your CQL queries below
+        </div>
+    </div>
+</mat-card>

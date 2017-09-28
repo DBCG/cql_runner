@@ -1,12 +1,17 @@
-<nav class="navbar navbar-default navbar-static-top" id="header">
-    <span class="title self-center">CQL Runner – Run CQL from your browser</span>
-    <button (click)="toggleResources()" class="self-center button pull-right">
-        <span class="self-center resLink">CQL Resources <i class="glyphicon glyphicon-question-sign"></i></span>
-    </button>                 
-</nav>
-<div class="resources" [hidden]="!resources">
-    <ul>
-        <li><a href="https://github.com/DBCG/cql_engine/wiki" target="_blank">CQL Engine Documentation Home</a></li>
-        <li><a href="http://cql-runner.dataphoria.org/format">CQL Formatter</a></li>
-    </ul>
+<div class="header">
+    <nav class="navbar navbar-default navbar-static-top" fxLayout fxLayoutAlign="space-between stretch">
+        <div class="title" fxLayout fxLayoutAlign="start center">
+            <img src="./assets/icons/search-engine.svg" alt="CQL Logo" class="logo"/>
+            <strong>CQL IDE </strong>&nbsp;– Develop and run CQL from your browser
+        </div>
+        <button (click)="toggleResources()" fxLayout fxLayoutAlign="start stretch">
+            <div class="resources-header">CQL Resources <i class="material-icons icon">library_books</i></div>
+        </button>               
+    </nav>
+    <div class="resources" [hidden]="!resources">
+        <ul>
+            <li><a href="https://github.com/DBCG/cql_engine/wiki" target="_blank">CQL Engine Documentation Home</a></li>
+            <li><a href="http://cql-runner.dataphoria.org/format">CQL Formatter</a></li>
+        </ul>
+    </div>
 </div>

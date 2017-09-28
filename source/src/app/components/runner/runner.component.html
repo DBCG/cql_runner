@@ -1,59 +1,37 @@
-<div class="container-fluid noPadding">
-    <div class="col-lg-6 noPadding">
+<cql-config (config)="setConfig($event)"></cql-config>
+<div fxLayout="row" class="runner">
+    <div fxFlex="50%">
         <!--Input-->
-        <nav class="navbar navbar-default noMargin input">
-            <div class="navbar-text in">
-                <h4 class="self-center">Input</h4>
+        <nav class="input" fxLayout fxLayoutAlign="space-between none">
+            <div class="in" fxLayout fxLayoutAlign="center center">
+                <h4>Input</h4>
             </div>
-            <div class="pull-right">
-                <button class="run" [class.running]="running" (click)="run()">
-                    <div class="self-center">
-                        Run
-                    </div>
-                    <i class="material-icons">play_arrow</i>
-                </button>
-            </div>
+            <button class="run" [class.running]="running" (click)="run()" fxLayout="column" fxLayoutAlign="center center" mat-raised-button>
+                <i class="material-icons icon" *ngIf="!running">play_arrow</i>
+                <i class="material-icons icon" *ngIf="running">hourglass_full</i>
+                <div>
+                    {{ running ? 'Running' : 'Run' }}
+                </div>
+            </button>
         </nav>
-        <div class="noPadding">
-            <textarea cql-code-mirror 
-              [theme]="'eclipse'"
-              id="input">// Enter CQL scripts here and hit 'Run'\n</textarea>
+        <div>
+            <textarea cql-code-mirror [type]="EditorType.input">// Enter CQL scripts here and hit 'Run'\n</textarea>
         </div>
     </div>
-    <div class="col-lg-6 noPadding">
-      <nav class="navbar navbar-default noMargin output">
-          <div class="navbar-text out">
-              <h4 class="self-center">Output</h4>
+    <div fxFlex="50%">
+      <nav class="output" fxLayout fxLayoutAlign="space-between none">
+          <div class="out" fxLayout fxLayoutAlign="center center">
+              <h4>Output</h4>
           </div>
-          <div class="pull-right">
-              <button class="clear" id="clearBtn" (click)="clear()">
-                  <div class="self-auto">
-                      Clear
-                  </div>
-                  <i class="material-icons" [hidden]="running">clear_all</i>
-              </button>
-          </div>
+            <button class="clear" [class.running]="running" id="clearBtn" (click)="clear()" fxLayout="column" fxLayoutAlign="center center" mat-raised-button>
+                <i class="material-icons icon">clear_all</i>
+                <div>
+                    Clear
+                </div>
+            </button>
       </nav>
-      <div class="noPadding">
-          <textarea cql-code-mirror 
-              [mode]="'textile'"
-              [lineNumbers]="false" 
-              [readOnly]="true" 
-              [ruler]="[{}]"
-              [styleActiveLine]="false"
-              id="output">// See results here</textarea>
+      <div>
+          <textarea cql-code-mirror [type]="EditorType.output">// See results here</textarea>
       </div> 
     </div>
-</div>
-<div class="container-fluid">
-    <runner-config 
-        (engine)="setEngine($event)"
-        (term)="setTerm($event)"
-        (termUser)="setTermUser($event)"
-        (termPass)="setTermPass($event)"
-        (data)="setData($event)"
-        (dataUser)="setDataUser($event)"
-        (dataPass)="setDataPass($event)"
-        (patient)="setPatient($event)">
-    </runner-config>
 </div>

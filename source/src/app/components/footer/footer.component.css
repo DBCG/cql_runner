@@ -1,40 +1,35 @@
-nav {
-    height: 28px !important;
-    min-height: 28px;
+.footer {
+    height: 40px !important;
+    min-height: 40px;
     background-color: #2f2f2f;
     border: none;
-}
-
-a {
     color: white;
 }
 
-.nopadding {
-    padding: 0px;
-    margin: 0px;
-    height: 28px;
+.description {
+    padding-left: 24px;
+}
+
+.description a {
+    color: #e91e63;
+}
+
+
+.icon {
+    text-decoration: none;
 }
 
 .issues {
-    padding-top: 3px;
     width: 200px;
-}
-
-.issue {
-    padding-left: 10px;
-}
-
-.text {
-    padding-left: 5px;
-    padding-top: 3px;
-    color: white;
-}
-
-.button {
-    background-color: #2196F3;
+    background-color: #e91e63;
     border: none;
     color: white;
     font-size: 1em;
-    height: 28px;
+    height: 100%;
     text-align: center;
+    text-decoration: none;
+}
+
+.issues .content:hover {
+    text-decoration: underline;
 }

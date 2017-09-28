@@ -11,8 +11,6 @@
 
 ## Introduction
 
-[![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
-
 HTML-based Clinical Query Language (CQL) Runner
 
 - Allows you to run CQL commands against a pre-existing CQL Engine from the comfort of your own browser

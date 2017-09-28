@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
+import { Configuration } from '../../components/config/config.model'; 
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ApiService {
@@ -9,37 +11,25 @@ export class ApiService {
 
   // Send code statement
   post(
-    code: string,
-    engineServiceUri: string,
-    engineUser: string,
-    enginePass: string,
-    fhirServiceUri: string,
-    fhirUser: string,
-    fhirPass: string,
-    dataServiceUri: string,
-    dataUser: string,
-    dataPass: string,
-    patientId: string): Promise<string>
+    config: Configuration): Promise<string>
   {
-    let headers = new Headers({
+    const headers = new Headers({
       'Content-Type': 'application/json'
-      //'Access-Control-Allow-Origin': 'http://localhost:8080/cqf-ruler/format'
     });
-
-    let data = {
-      "code": code,
-      "fhirServiceUri": fhirServiceUri,
-      "fhirUser": fhirUser,
-      "fhirPass": fhirPass,
-      "dataServiceUri": dataServiceUri,
-      "dataUser": dataUser,
-      "dataPass": dataPass,
-      "patientId": patientId
+    const data = {
+      "code": config.value,
+      "fhirServiceUri": config.fhirUri,
+      "fhirUser": config.fhirUsername,
+      "fhirPass": config.fhirPassword,
+      "dataServiceUri": config.dataSourceUri || environment.dataSourceUri,
+      "dataUser": config.dataSourceUsername,
+      "dataPass": config.dataSourcePassword,
+      "patientId": config.patientId
     };
 
     // TODO: enable authorization for engine service
     return this.http
-      .post(engineServiceUri, JSON.stringify(data), {headers: headers})
+      .post(config.engineUri || environment.engineUri, JSON.stringify(data), {headers: headers})
       .toPromise()
       .then(res => res.json())
       .catch(this.handleError);
