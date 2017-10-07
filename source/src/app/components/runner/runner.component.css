@@ -32,7 +32,11 @@ button {
 
 button.run {
     padding: 0.1rem 0rem;
-}        
+}     
+
+button.format {
+    padding: 0.1rem 0rem;
+}    
 
 button.clear {
     padding: 0.1rem 0rem;
@@ -50,7 +54,15 @@ button.running {
 
 button.running:hover {
     cursor: default;
-    }
+}
+
+button.formatting {
+    background-color: #424242;
+}
+
+button.formatting:hover {
+    cursor: default;
+}
 
 button:focus {
     outline: 0;
@@ -65,11 +77,20 @@ button:focus {
     font-size: 0.8rem;
 }
 
+.format {
+    background-color: #af4cab;
+    font-size: 0.8rem;
+}
+
 .clear {
     font-size: 0.8rem;
 }
 
 .clear.running {
+    opacity: 0;
+}
+
+.clear.formatting {
     opacity: 0;
 }
 

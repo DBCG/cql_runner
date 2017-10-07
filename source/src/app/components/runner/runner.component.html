@@ -6,16 +6,26 @@
             <div class="in" fxLayout fxLayoutAlign="center center">
                 <h4>Input</h4>
             </div>
-            <button class="run" [class.running]="running" (click)="run()" fxLayout="column" fxLayoutAlign="center center" mat-raised-button>
-                <i class="material-icons icon" *ngIf="!running">play_arrow</i>
-                <i class="material-icons icon" *ngIf="running">hourglass_full</i>
-                <div>
-                    {{ running ? 'Running' : 'Run' }}
-                </div>
-            </button>
+            <div fxLayout fxLayoutAlign="center center">
+                <button class="format" [class.formatting]="formatting" (click)="format()" fxLayout="column" fxLayoutAlign="center" mat-raised-button>
+                    <i class="material-icons icon" *ngIf="!formatting">format_align_center</i>
+                    <i class="material-icons icon" *ngIf="formatting">hourglass_full</i>
+                    <div>
+                        {{ formatting ? 'Formatting' : 'Format' }}
+                    </div>
+                </button>
+                <button title="If code is selected, only the selected code will be executed" class="run" [class.running]="running" (click)="run()" fxLayout="column" fxLayoutAlign="center center" mat-raised-button>
+                    <i class="material-icons icon" *ngIf="!running">play_arrow</i>
+                    <i class="material-icons icon" *ngIf="running">hourglass_full</i>
+                    <div>
+                        {{ running ? 'Running' : 'Run' }}
+                    </div>
+                </button>
+            </div>
         </nav>
         <div>
-            <textarea cql-code-mirror [type]="EditorType.input">// Enter CQL scripts here and hit 'Run'\n</textarea>
+            <textarea cql-code-mirror [type]="EditorType.input">// Enter CQL scripts here and hit 'Run' for execution or 'Format' to make your code pretty =)
+</textarea>
         </div>
     </div>
     <div fxFlex="50%">

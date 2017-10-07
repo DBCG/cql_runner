@@ -20,6 +20,7 @@ export class RunnerComponent {
   @ViewChildren(CodeMirrorDirective) codeEditors: QueryList<CodeMirrorDirective>;
   error = '';
   running = false;
+  formatting = false;
   // TODO: Implement new configuration Component
   
   oValue: string;
@@ -84,6 +85,43 @@ export class RunnerComponent {
     }
 
     this.updateOutput();
+  }
+
+  output: string = 'Error formatting CQL code';
+  format() {
+    if (!this.formatting) {
+      this.formatting = true;
+      let currentEngineUrl = this._config.engineUri;
+      let input = this.codeEditors.find((mirror)=> { return mirror._type === EditorType.input });
+      this._config.value = input.value;
+      this._config.engineUri = 'http://cql.dataphoria.org/cql/format';
+      this._apiService.post(this._config)
+        .then(responses => {
+          this.processResponse(responses);
+          this.formatting = false;
+        })
+        .catch(error => {
+          this.output = error;
+          this.formatting = false;
+          this.displayOutput();
+        });
+      this._config.engineUri = currentEngineUrl;
+    }
+  }
+
+  processResponse(responses: any) {
+    for (let response of responses) {
+      if (response['formatted-cql']) {
+        this.output = response['formatted-cql'];
+      }
+    }
+
+    this.displayOutput();
+  }
+
+  displayOutput() {
+    let input = this.codeEditors.find((mirror)=> { return mirror._type === EditorType.input });
+    input.value = this.output;
   }
 
   setConfig(config: Configuration) {
