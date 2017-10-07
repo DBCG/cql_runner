@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { Configuration } from './config.model';
+import { ConfigService } from './config.service';
 import { environment } from '../../../environments/environment';
 
 @Component ({
@@ -10,8 +11,15 @@ import { environment } from '../../../environments/environment';
 
 export class ConfigComponent {
 
-  config = new Configuration();
+  config: Configuration;
   isParametersOpen = true;
+
+  constructor(private _configService: ConfigService) {
+    this.config = _configService.config;
+  }
+
+  
+  
 
   // TODO: Move to environmental config
   engineUrlOptions = [

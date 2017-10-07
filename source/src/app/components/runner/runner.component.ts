@@ -2,6 +2,7 @@ import { Component, ViewChildren, QueryList } from '@angular/core';
 import { ApiService } from '../../shared/api/api.service';
 import * as CodeMirror from 'codemirror';
 import { Configuration } from '../config/config.model';
+import { ConfigService } from '../config/config.service';
 import { CodeMirrorDirective } from '../../shared/code-mirror/code-mirror.directive';
 import { EditorType } from '../../shared/code-mirror/code-mirror.model';
 
@@ -20,19 +21,18 @@ export class RunnerComponent {
   error = '';
   running = false;
   // TODO: Implement new configuration Component
-  private _config = new Configuration();
+  
   oValue: string;
-
-  constructor (private _apiService: ApiService) {}
+  private _config: Configuration;
+  constructor (private _apiService: ApiService, private _configService: ConfigService) {
+    this._config = _configService.config;
+  }
 
   run() {
     this.clear();
     if (!this.running) {
       this.running = true;
       let input = this.codeEditors.find((mirror)=> { return mirror._type === EditorType.input });
-      // this._config = {
-      //   value: input.value
-      // };
       this._config.value = input.value;
       this._apiService.post(this._config)
         .then(responses => {
