@@ -24,8 +24,7 @@
             </div>
         </nav>
         <div>
-            <textarea cql-code-mirror [type]="EditorType.input">// Enter CQL scripts here and hit 'Run' for execution or 'Format' to make your code pretty =)
-</textarea>
+            <textarea cql-code-mirror [type]="EditorType.input">{{ getExample() }}</textarea>
         </div>
     </div>
     <div fxFlex="50%">
@@ -42,6 +41,6 @@
       </nav>
       <div>
           <textarea cql-code-mirror [type]="EditorType.output">// See results here</textarea>
-      </div> 
+      </div>
     </div>
 </div>

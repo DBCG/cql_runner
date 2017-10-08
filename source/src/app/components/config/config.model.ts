@@ -5,7 +5,7 @@ export interface IConfiguration {
     engineUri?: string; // engine endpoint
     fhirUri?: string; // fhir server endpoint
     fhirUsername?: string; // fhir server username
-    fhirPassword?: string; // fhir server password    
+    fhirPassword?: string; // fhir server password
     terminologyUri?: string; // terminology server username
     terminologyUsername?: string; // terminology server username
     terminologyPassword?: string; // terminology server password

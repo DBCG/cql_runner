@@ -314,6 +314,7 @@ export class CodeMirrorConfig implements ICodeMirrorConfig {
     } else {
       this.readOnly = true;
       this.theme = 'monokai';
+      this.mode = '';
     }
   }
 }
@@ -331,8 +332,8 @@ export class CodeMirrorDirective implements AfterViewInit {
   set value(value) {
     this._config.value = value;
     this.editor.setValue(value);
-  } 
-  
+  }
+
   get value(): string {
     const selection = this.editor.getSelection();
     return selection.length > 0 ? selection : this.editor.getValue();
@@ -352,5 +353,5 @@ export class CodeMirrorDirective implements AfterViewInit {
   } get type(): EditorType {
     return this._type;
   }
-  
+
 }
