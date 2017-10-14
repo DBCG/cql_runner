@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Headers, Http, Response } from '@angular/http';
 import 'rxjs/add/operator/toPromise';
-import { Configuration } from '../../components/config/config.model'; 
+import { Configuration } from '../../components/config/config.model';
 import { environment } from '../../../environments/environment';
 
 @Injectable()
@@ -18,9 +18,9 @@ export class ApiService {
     });
     const data = {
       "code": config.value,
-      "fhirServiceUri": config.fhirUri,
-      "fhirUser": config.fhirUsername,
-      "fhirPass": config.fhirPassword,
+      "terminologyServiceUri": config.terminologyUri,
+      "terminologyUser": config.terminologyUsername,
+      "terminologyPass": config.terminologyPassword,
       "dataServiceUri": config.dataSourceUri || environment.dataSourceUri,
       "dataUser": config.dataSourceUsername,
       "dataPass": config.dataSourcePassword,

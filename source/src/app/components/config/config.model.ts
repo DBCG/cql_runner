@@ -3,9 +3,9 @@ import { environment } from '../../../environments/environment';
 export interface IConfiguration {
     value?: string; // value of user input
     engineUri?: string; // engine endpoint
-    fhirUri?: string; // fhir server endpoint
-    fhirUsername?: string; // fhir server username
-    fhirPassword?: string; // fhir server password
+    // fhirUri?: string; // fhir server endpoint
+    // fhirUsername?: string; // fhir server username
+    // fhirPassword?: string; // fhir server password
     terminologyUri?: string; // terminology server username
     terminologyUsername?: string; // terminology server username
     terminologyPassword?: string; // terminology server password
@@ -18,9 +18,9 @@ export interface IConfiguration {
 export class Configuration implements IConfiguration {
     value: string;
     engineUri = environment.engineUri;
-    fhirUri = environment.fhirUri;
-    fhirUsername: string;
-    fhirPassword: string;
+    // fhirUri = environment.fhirUri;
+    // fhirUsername: string;
+    // fhirPassword: string;
     terminologyUri = environment.terminologyUri;
     terminologyUsername: string;
     terminologyPassword: string;

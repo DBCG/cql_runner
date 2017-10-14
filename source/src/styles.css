@@ -13,8 +13,13 @@ body {
 }
 
 .CodeMirror {
-  min-height: 600px !important;
+  /*
+      Little hack for a sticky footer: viewscreen height minus height of components displayed.
+      Must update when any display component's height is changed.
+  */
+  min-height: calc(100vh - 220px) !important;
   font-size: 12px !important;
+  overflow-y: auto;
 }
 
 table {

@@ -4,8 +4,9 @@
 }
 
 .runner {
-    border-top: 10px solid #2f2f2f;
-    border-bottom: 10px solid #424242;
+    /*border-top: 10px solid #2f2f2f;*/
+    /*border-bottom: 10px solid #424242;*/
+    /*flex: 1 0 auto;*/
     box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
     -webkit-box-shadow: 0 3px 1px -2px rgba(0, 0, 0, .2), 0 2px 2px 0 rgba(0, 0, 0, .14), 0 1px 5px 0 rgba(0, 0, 0, .12);
 }
@@ -17,7 +18,7 @@ h4 {
 
 .in {
     color: #2f2f2f;
-    padding-left: 1.5rem;             
+    padding-left: 1.5rem;
 }
 
 button {
@@ -32,11 +33,7 @@ button {
 
 button.run {
     padding: 0.1rem 0rem;
-}     
-
-button.format {
-    padding: 0.1rem 0rem;
-}    
+}
 
 button.clear {
     padding: 0.1rem 0rem;
@@ -56,17 +53,9 @@ button.running:hover {
     cursor: default;
 }
 
-button.formatting {
-    background-color: #424242;
-}
-
-button.formatting:hover {
-    cursor: default;
-}
-
 button:focus {
     outline: 0;
-}       
+}
 
 .icon {
     /* font-size: 1rem; */
@@ -77,20 +66,11 @@ button:focus {
     font-size: 0.8rem;
 }
 
-.format {
-    background-color: #af4cab;
-    font-size: 0.8rem;
-}
-
 .clear {
     font-size: 0.8rem;
 }
 
 .clear.running {
-    opacity: 0;
-}
-
-.clear.formatting {
     opacity: 0;
 }
 
@@ -109,5 +89,5 @@ button:focus {
     border-right: none;
     border-left: none;
     border-radius: 0 !important;
-    -moz-border-radius: 0 !important;    
+    -moz-border-radius: 0 !important;
 }

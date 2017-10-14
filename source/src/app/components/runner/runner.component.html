@@ -1,4 +1,5 @@
-<cql-config (config)="setConfig($event)"></cql-config>
+<!--<cql-config (config)="setConfig($event)"></cql-config>-->
+<cql-menu [runner]="this"></cql-menu>
 <div fxLayout="row" class="runner">
     <div fxFlex="50%">
         <!--Input-->
@@ -7,13 +8,6 @@
                 <h4>Input</h4>
             </div>
             <div fxLayout fxLayoutAlign="center center">
-                <button class="format" [class.formatting]="formatting" (click)="format()" fxLayout="column" fxLayoutAlign="center" mat-raised-button>
-                    <i class="material-icons icon" *ngIf="!formatting">format_align_center</i>
-                    <i class="material-icons icon" *ngIf="formatting">hourglass_full</i>
-                    <div>
-                        {{ formatting ? 'Formatting' : 'Format' }}
-                    </div>
-                </button>
                 <button title="If code is selected, only the selected code will be executed" class="run" [class.running]="running" (click)="run()" fxLayout="column" fxLayoutAlign="center center" mat-raised-button>
                     <i class="material-icons icon" *ngIf="!running">play_arrow</i>
                     <i class="material-icons icon" *ngIf="running">hourglass_full</i>

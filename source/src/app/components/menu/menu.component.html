@@ -1,0 +1,42 @@
+<mat-toolbar color="primary">
+
+  <!--<span>MyCompany</span>-->
+  <!--<span class="example-spacer"></span>-->
+  <!--<button mat-button [matMenuTriggerFor]="fileMenu">File</button>-->
+  <!--<span class="example-spacer"></span>-->
+  <!--<button mat-button [matMenuTriggerFor]="editMenu">Edit</button>-->
+  <!--<span class="example-spacer"></span>-->
+  <!--<button mat-button [matMenuTriggerFor]="formatMenu">Format</button>-->
+  <span class="example-spacer"></span>
+  <button mat-button (click)="openDialog()">Config</button>
+  <span class="example-spacer"></span>
+  <!--<button mat-button [matMenuTriggerFor]="format">Format</button>-->
+  <button mat-button (click)="runner.format()">Format</button>
+  <span class="example-spacer"></span>
+  <button mat-button [matMenuTriggerFor]="examples">Examples</button>
+
+</mat-toolbar>
+
+<mat-menu #fileMenu="matMenu">
+  <button mat-menu-item> New </button>
+  <button mat-menu-item> Save </button>
+  <button mat-menu-item> Load </button>
+  <button mat-menu-item> Exit </button>
+</mat-menu>
+
+<mat-menu #editMenu="matMenu">
+  <button mat-menu-item> Settings </button>
+  <button mat-menu-item> Help </button>
+</mat-menu>
+
+<!-- If/when the Format menu expands, use the following -->
+<!--<mat-menu #format="matMenu">-->
+  <!--<button mat-menu-item (click)="runner.format()"> Format CQL </button>-->
+<!--</mat-menu>-->
+
+<mat-menu #examples="matMenu">
+  <button mat-menu-item (click)="loadExample(1)"> Retrieval with Context </button>
+  <button mat-menu-item (click)="loadExample(2)"> Retrieval with Code Filter </button>
+  <button mat-menu-item (click)="loadExample(0)"> CQL Types </button>
+  <!--<button mat-menu-item> Settings </button>-->
+</mat-menu>

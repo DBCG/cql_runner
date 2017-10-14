@@ -18,22 +18,19 @@ export class ConfigComponent {
     this.config = _configService.config;
   }
 
-  
-  
-
   // TODO: Move to environmental config
   engineUrlOptions = [
     'http://cql.dataphoria.org/cql/evaluate',
     'http://google.com/cql/engine'
   ];
 
-  fhirUrlOptions = [
-    'http://measure.eval.kanvix.com/cqf-ruler/baseDstu3',
-    'http://test.fhir.org/r2',
-    'http://test.fhir.org/r3',
-    'http://test.fhir.org/r4',
-    'http://sandbox.hspconsortium.org'
-  ];
+  // fhirUrlOptions = [
+  //   'http://measure.eval.kanvix.com/cqf-ruler/baseDstu3',
+  //   'http://test.fhir.org/r2',
+  //   'http://test.fhir.org/r3',
+  //   'http://test.fhir.org/r4',
+  //   'http://sandbox.hspconsortium.org'
+  // ];
 
   terminologyUrlOptions = [
     'http://measure.eval.kanvix.com/cqf-ruler/baseDstu3',
@@ -51,8 +48,8 @@ export class ConfigComponent {
     'http://sandbox.hspconsortium.org'
   ];
 
-  toggleParametersOpen() {
-    this.isParametersOpen = !this.isParametersOpen;
-  }
+  // toggleParametersOpen() {
+  //   this.isParametersOpen = !this.isParametersOpen;
+  // }
 
 }

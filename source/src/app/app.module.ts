@@ -6,7 +6,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { FlexLayoutModule } from '@angular/flex-layout';
-import { MatButtonModule, MatInputModule, MatAutocompleteModule, MatCardModule, MatTooltipModule } from '@angular/material';
+import { MatButtonModule, MatMenuModule, MatDialogModule, MatIconModule, MatInputModule, MatAutocompleteModule, MatCardModule, MatTooltipModule, MatToolbarModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CodeMirrorDirective } from './shared/code-mirror/code-mirror.directive';
 import { FormatterComponent } from './components/formatter/formatter.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 import { ConfigService } from './components/config/config.service';
 
@@ -29,7 +30,11 @@ import { routing } from './app.routes';
     FooterComponent,
     HeaderComponent,
     CodeMirrorDirective,
-    FormatterComponent
+    FormatterComponent,
+    MenuComponent
+  ],
+  entryComponents: [
+    ConfigComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +42,11 @@ import { routing } from './app.routes';
     HttpModule,
     FlexLayoutModule,
     BrowserAnimationsModule,
+    MatMenuModule,
+    MatToolbarModule,
     MatButtonModule,
+    MatDialogModule,
+    MatIconModule,
     MatInputModule,
     MatAutocompleteModule,
     MatCardModule,
@@ -45,7 +54,7 @@ import { routing } from './app.routes';
     routing
   ],
   providers: [
-    { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true }, // Strip out once they fix 
+    { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true }, // Strip out once they fix
     ConfigService
   ],
   bootstrap: [AppComponent]
