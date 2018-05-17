@@ -79,10 +79,10 @@ export class RunnerComponent {
       }
       // Invalid expression – error with named expression
       if (response['error']) {
-        this.oValue += '>> Error: ' + response['error'] + '\n';
+        this.oValue += '>> Error ' + response.location + ': ' + response['error'] + '\n';
       }
       // Valid expression
-      if (response['result']) {
+      if (response['result'] || response['result'] == "") {
         this.oValue += '>> ' + response['name'] + ' ' + response.location + ' ' + response.result + '\n';
       }
     }

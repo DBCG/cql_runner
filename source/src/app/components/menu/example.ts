@@ -116,8 +116,8 @@ export const examples = [
     '\tThis example is provided to illustrate data retrieval in different contexts.\n' +
     '    1. Run the library as is.\n' +
     '       Note that no resources are returned when the patient id is null.\n' +
-    '    2. Set the patient id to Patient-12214 and run again.\n' +
-    '       Note that all the returned Procedures refer to Patient-12214 as the subject.\n' +
+    '    2. Set the patient id to Patient-1136 and run again.\n' +
+    '       Note that all the returned Procedures refer to Patient-1136 as the subject.\n' +
     '    3. Comment out context Patient, uncomment context Population, and run again.\n' +
     '       This will return all the Procedures in the FHIR Server.\n' +
     '*/\n' +
@@ -133,26 +133,33 @@ export const examples = [
   {
     'cql': '/*\n' +
     '\tThis example is provided to illustrate retrievals with a valueset and a code filter.\n' +
-    '    1. Set the patient id in the configuration as Patient-12214. Leave other config as default.\n' +
+    '    1. Set the patient id in the configuration as example-rec-04-long-acting-opioid. \n' +
+    '       Leave other config as default.\n' +
     '    2. Run the library.\n' +
     '*/\n' +
     'library Retrieve2 version \'1.0\'\n' +
     '\n' +
     'using FHIR version \'3.0.0\'\n' +
     '\n' +
-    'valueset "Malignant Neoplasm of Colon": \'2.16.840.1.113883.3.464.1003.108.11.1001\'\n' +
+    'include FHIRHelpers version \'3.0.0\' called FHIRHelpers\n' +
+    '\n' +
+    'codesystem "Medication Request Category Codes": \'http://hl7.org/fhir/medication-request-category\'\n' +
+    '\n' +
+    'valueset "Ambulatory Abuse Potential Opioids": \'http://hl7.org/fhir/ig/opioid-cds/ValueSet/opioids-abused-in-ambulatory-care\'\n' +
+    '\n' +
+    'code "Outpatient": \'outpatient\' from "Medication Request Category Codes"\n' +
     '\n' +
     'context Patient\n' +
     '\n' +
     '/*\n' +
-    '  The MalignantNeoplasmConditions expression returns all the Conditions associated with the patient\n' +
-    '  where the Condition.code is in the Malignant Neoplasm of Colon valueset and the clinicalStatus is\n' +
-    '  active and the verificationStatus is confirmed. You can verify this by examining the returned\n' +
-    '  Conditions.\n' +
+    '  The "Active Ambulatory Opioid Rx" expression returns all the MedicationRequests associated with the \n' +
+    '  patient where the MedicationRequest.medication code is in the "Ambulatory Abuse Potential Opioids" \n' +
+    '  valueset and the status is active and the category code is "outpatient". You can verify this by examining \n' +
+    '  the returned MedicationRequests.\n' +
     '*/\n' +
-    'define MalignantNeoplasmConditions:\n' +
-    '  [Condition: "Malignant Neoplasm of Colon"] C\n' +
-    '    where C.clinicalStatus.value = \'inactive\'\n' +
-    '      and C.verificationStatus.value = \'confirmed\'\n'
+    'define "Active Ambulatory Opioid Rx":\n' +
+    '  [MedicationRequest: "Ambulatory Abuse Potential Opioids"] Rx\n' +
+    '    where Rx.status.value = \'active\'\n' +
+    '      and Rx.category.coding[0] ~ "Outpatient"'
   }
 ];
