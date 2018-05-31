@@ -133,7 +133,7 @@ export const examples = [
   {
     'cql': '/*\n' +
     '\tThis example is provided to illustrate retrievals with a valueset and a code filter.\n' +
-    '    1. Set the patient id in the configuration as example-rec-04-long-acting-opioid. \n' +
+    '    1. Set the patient id in the configuration as example-rec-04-long-acting-opioid-no-prefetch. \n' +
     '       Leave other config as default.\n' +
     '    2. Run the library.\n' +
     '*/\n' +
@@ -154,8 +154,8 @@ export const examples = [
     '/*\n' +
     '  The "Active Ambulatory Opioid Rx" expression returns all the MedicationRequests associated with the \n' +
     '  patient where the MedicationRequest.medication code is in the "Ambulatory Abuse Potential Opioids" \n' +
-    '  valueset and the status is active and the category code is "outpatient". You can verify this by examining \n' +
-    '  the returned MedicationRequests.\n' +
+    '  valueset, the status is active and the category code is "outpatient". You can verify this by examining \n' +
+    '  the returned MedicationRequest.\n' +
     '*/\n' +
     'define "Active Ambulatory Opioid Rx":\n' +
     '  [MedicationRequest: "Ambulatory Abuse Potential Opioids"] Rx\n' +
