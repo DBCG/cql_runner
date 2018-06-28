@@ -2,7 +2,7 @@
 
 ## New Developments
 
-7/10/2017 - Added a [formatter page](http://cql-runner.dataphoria.org/format) for formatting CQL code.
+7/10/2017 - Added a formatter option for formatting CQL code. Click the Format button from the main runner to format the CQL in the current editor window.
 
 ## See it in Action
 
