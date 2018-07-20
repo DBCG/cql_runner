@@ -7,7 +7,6 @@
 ## See it in Action
 
 [CQL Runner](http://cql-runner.dataphoria.org/) implementation.
-[CQL Formatter](http://cql-runner.dataphoria.org/format) implementation.
 
 ## Introduction
 
