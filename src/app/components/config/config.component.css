@@ -1,0 +1,84 @@
+.group {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.group .title {
+  padding: 0.25rem;
+  font-weight: 700;
+}
+
+.group .description {
+  font-size: 0.8rem;
+}
+
+.group.engine {
+  padding-left: 24px;
+}
+
+.parameters {
+  background-color: #2f2f2f;
+}
+
+.parameters .description a {
+  font-size: 0.8rem;
+  padding: 0.25rem;
+  color: #e91e63;
+}
+
+.icon {
+  font-size: 1rem;
+  color: #FDD835;
+}
+
+.title .icon {
+  padding-left: 0.25rem;
+}
+
+.item .icon {
+  padding-right: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.summary {
+  font-size: 0.8rem !important;
+  text-decoration: underline;
+  color: #e91e63;
+}
+
+.guide .title {
+  font-weight: 700;
+}
+
+.guide .body {
+  font-size: 0.8rem;
+  padding: 1rem;
+  line-height: 1.25rem;
+}
+
+.toggle {
+  border-radius: 50%;
+  color: white;
+  cursor: pointer;
+  background-color: #e91e63;
+}
+
+.toggle:hover {
+  background-color: #424242;
+}
+
+/* Warning--this is deprecated */
+
+::ng-deep .mat-form-field-infix {
+  border-top: none;
+}
+
+::ng-deep .mat-form-field-placeholder-wrapper {
+  display: none;
+}
+
+.mat-toolbar {
+  line-height: 36px;
+}
+
+

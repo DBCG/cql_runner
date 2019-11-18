@@ -1,0 +1,20 @@
+:host {
+  font-family: 'Segoe UI', Helvetica, Tahoma, Geneva, Verdana, sans-serif;
+  height: 100%;
+}
+
+.noPadding {
+  padding: 0 !important;
+}
+
+.button.running {
+  background-color: darkgrey;
+}
+
+.button.running:hover {
+  cursor: default;
+}
+
+button:focus {
+  outline: 0;
+}
