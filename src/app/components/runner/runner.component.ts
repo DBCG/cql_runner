@@ -67,7 +67,7 @@ export class RunnerComponent {
   processResponses(responses: any) {
     // TODO: Move this sorting/line property to service end
     responses = this.getNumberedResponses (responses);
-    // // Sort responses in ascending order by line number
+    // Sort responses in ascending order by line number
     responses = responses.sort((a, b) => {
       return a.line === b.line ? 0 : +(a.line > b.line) || -1;
     });
