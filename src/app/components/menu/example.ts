@@ -121,6 +121,8 @@ export const examples = [
     '  CQL Specification Appendix B: https://cql.hl7.org/STU3/09-b-cqlreference.html\n' +
     '  HEDIS Implementation Guide Profiles: http://build.fhir.org/ig/cqframework/hedis-ig/profiles.html\n' +
     '  FHIR STU3 Resources: http://hl7.org/fhir/STU3/resourcelist.html\n' +
+    '\n' +
+    'Answer key: https://github.com/DBCG/cql_runner/blob/master/examples/ccs-logic.cql\n' +
     '*/\n' +
     '\n' +
     'library CCS_FHIR version \'1.0.1\'\n' +
@@ -259,6 +261,8 @@ export const examples = [
     '  CQL Specification Appendix B: https://cql.hl7.org/STU3/09-b-cqlreference.html\n' +
     '  HEDIS Implementation Guide Profiles: http://build.fhir.org/ig/cqframework/hedis-ig/profiles.html\n' +
     '  FHIR STU3 Resources: http://hl7.org/fhir/STU3/resourcelist.html\n' +
+    '\n' +
+    'Answer key: https://github.com/DBCG/cql_runner/blob/master/examples/col-logic.cql\n' +
     '*/\n' +
     '\n' +
     'library COL_FHIR version \'1.0.1\'\n' +
