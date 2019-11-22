@@ -117,6 +117,10 @@ export const examples = [
     '\n' +
     'This is a CQL authoring exercise. Provide logic for the expressions with null results.\n' +
     '\n' +
+    'There are 2 test patients - one included in the numerator and one excluded\n' +
+    'In Numerator Patient ID: Patient-6520\n' +
+    'Not in Numerator Patient ID: Patient-1136\n' +
+    '\n' +
     'References:\n' +
     '  CQL Specification Appendix B: https://cql.hl7.org/STU3/09-b-cqlreference.html\n' +
     '  HEDIS Implementation Guide Profiles: http://build.fhir.org/ig/cqframework/hedis-ig/profiles.html\n' +
@@ -144,6 +148,7 @@ export const examples = [
     'valueset "Cervical Cytology Value Set": \'2.16.840.1.113883.3.464.1004.1208\'\n' +
     'valueset "HPV Tests Value Set": \'2.16.840.1.113883.3.464.1004.1265\'\n' +
     '\n' +
+    '// Change the Measurement Period year to 1997 for the In Numerator Patient test\n' +
     'parameter "Measurement Period" default Interval[@2017-01-01T00:00, @2017-12-31T00:00]\n' +
     '\n' +
     'define "First Predecessor Year":\n' +
@@ -257,6 +262,10 @@ export const examples = [
     '\n' +
     'This is a CQL authoring exercise. Provide logic for the expressions with null results.\n' +
     '\n' +
+    'There are 2 test patients - one included in the numerator and one excluded\n' +
+    'In Numerator Patient ID: Patient-6523\n' +
+    'Not in Numerator Patient ID: Patient-6484\n' +
+    '\n' +
     'References:\n' +
     '  CQL Specification Appendix B: https://cql.hl7.org/STU3/09-b-cqlreference.html\n' +
     '  HEDIS Implementation Guide Profiles: http://build.fhir.org/ig/cqframework/hedis-ig/profiles.html\n' +
@@ -284,6 +293,7 @@ export const examples = [
     'valueset "FOBT Value Set": \'2.16.840.1.113883.3.464.1004.1093\'\n' +
     'valueset "Total Colectomy Value Set": \'2.16.840.1.113883.3.464.1004.1250\'\n' +
     '\n' +
+    '// Change the Measurement Period year to 1997 for the In Numerator Patient test\n' +
     'parameter "Measurement Period" default Interval[@2017-01-01T00:00, @2017-12-31T00:00]\n' +
     '\n' +
     'define "Lookback Interval Two More Years":\n' +
