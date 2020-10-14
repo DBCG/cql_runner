@@ -12,6 +12,9 @@ export interface IConfiguration {
   dataSourceUri?: string; // dataSource endpoint
   dataSourceUsername?: string; // dataSource username
   dataSourcePassword?: string; // dataSource password
+  librarySourceUri?: string; // dataSource endpoint
+  librarySourceUsername?: string; // dataSource username
+  librarySourcePassword?: string; // dataSource password
   patientId?: string; // Id of patient in context
 }
 
@@ -27,5 +30,8 @@ export class Configuration implements IConfiguration {
   dataSourceUri = environment.dataSourceUri;
   dataSourceUsername: string;
   dataSourcePassword: string;
+  librarySourceUri = environment.librarySourceUri;
+  librarySourceUsername: string;
+  librarySourcePassword: string;
   patientId: string;
 }

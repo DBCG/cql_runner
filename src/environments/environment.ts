@@ -5,6 +5,7 @@
 export const environment = {
   production: false,
   engineUri: 'http://cql.dataphoria.org/cql/evaluate',
-  terminologyUri: 'http://measure.eval.kanvix.com/cqf-ruler-dstu3/fhir',
-  dataSourceUri: 'http://measure.eval.kanvix.com/cqf-ruler-dstu3/fhir'
+  terminologyUri: 'http://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
+  dataSourceUri: 'http://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
+  librarySourceUri: 'http://cql-sandbox.alphora.com/cqf-ruler-r4/fhir'
 };

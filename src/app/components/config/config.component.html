@@ -68,6 +68,20 @@
       <!--</div>-->
       <div class="group" fxLayout fxLayoutAlign="center start" *ngIf="isParametersOpen">
         <div class="title" fxLayout fxLayoutAlign="start center" fxFlex="33.33%">
+          <div>Patient Id</div>
+          <span matTooltip="Patient context"><i class="material-icons icon">info</i></span>
+        </div>
+        <div class="items" fxFlex>
+          <div class="item">
+            <mat-form-field>
+              <i matPrefix matTooltip="Id" class="material-icons icon">assignment_ind</i>
+              <input #patientId type="text" matInput [(ngModel)]="config.patientId" placeholder="Patient Id" aria-label="Patient Id">
+            </mat-form-field>
+          </div>
+        </div>
+      </div>
+      <div class="group" fxLayout fxLayoutAlign="center start" *ngIf="isParametersOpen">
+        <div class="title" fxLayout fxLayoutAlign="start center" fxFlex="33.33%">
           <div>Source Data</div>
           <span matTooltip="Source data for queries"><i class="material-icons icon">info</i></span>
         </div>
@@ -130,14 +144,31 @@
       </div>
       <div class="group" fxLayout fxLayoutAlign="center start" *ngIf="isParametersOpen">
         <div class="title" fxLayout fxLayoutAlign="start center" fxFlex="33.33%">
-          <div>Patient Id</div>
-          <span matTooltip="Patient context"><i class="material-icons icon">info</i></span>
+          <div>Library Repository</div>
+          <span matTooltip="Library repository for included libraries"><i class="material-icons icon">info</i></span>
         </div>
         <div class="items" fxFlex>
           <div class="item">
             <mat-form-field>
-              <i matPrefix matTooltip="Id" class="material-icons icon">assignment_ind</i>
-              <input #patientId type="text" matInput [(ngModel)]="config.patientId" placeholder="Patient Id" aria-label="Patient Id">
+              <i matPrefix matTooltip="URI" class="material-icons icon">link</i>
+              <input #librarySourceUrl type="text" matInput [(ngModel)]="config.librarySourceUri" [matAutocomplete]="librarySourceUrlAuto" placeholder="Library Repository URL" aria-label="Library Repository URL">
+            </mat-form-field>
+            <mat-autocomplete #librarySourceUrlAuto="matAutocomplete">
+              <mat-option *ngFor="let option of librarySourceUrlOptions" [value]="option">
+                {{ option }}
+              </mat-option>
+            </mat-autocomplete>
+          </div>
+          <div class="item">
+            <mat-form-field>
+              <i matPrefix matTooltip="Username" class="material-icons icon">person</i>
+              <input type="text" matInput [(ngModel)]="config.librarySourceUsername" placeholder="Library Repository Username" aria-label="Library Repository Username">
+            </mat-form-field>
+          </div>
+          <div class="item">
+            <mat-form-field>
+              <i matPrefix matTooltip="Password" class="material-icons icon">vpn_key</i>
+              <input type="password" matInput [(ngModel)]="config.librarySourcePassword" placeholder="Library Repository Password" aria-label="Library Repository Password">
             </mat-form-field>
           </div>
         </div>
