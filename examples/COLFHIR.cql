@@ -2,16 +2,19 @@
 Colorectal Cancer Screening (COL)
 */
 
-library COL_FHIR version '1.0.1'
+library COLFHIR version '1.0.1'
 
-using FHIR version '3.0.0'
+using FHIR version '4.0.1'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '4.0.1'
 
 /*
 Description
 The percentage of members 50-75 years of age who had appropriate screening for colorectal cancer.
 */
+
+codesystem "CONDCLINSTATUS": 'http://terminology.hl7.org/CodeSystem/condition-clinical'
+codesystem "CONDVERSTATUS": 'http://terminology.hl7.org/CodeSystem/condition-ver-status'
 
 valueset "Colonoscopy Value Set": '2.16.840.1.113883.3.464.1004.1064'
 valueset "Colorectal Cancer Value Set": '2.16.840.1.113883.3.464.1004.1065'
@@ -20,6 +23,9 @@ valueset "FIT-DNA Value Set": '2.16.840.1.113883.3.464.1004.1420'
 valueset "Flexible Sigmoidoscopy Value Set": '2.16.840.1.113883.3.464.1004.1102'
 valueset "FOBT Value Set": '2.16.840.1.113883.3.464.1004.1093'
 valueset "Total Colectomy Value Set": '2.16.840.1.113883.3.464.1004.1250'
+
+code "active": 'active' from "CONDCLINSTATUS" display 'Active'
+code "confirmed": 'confirmed' from "CONDVERSTATUS" display 'Confirmed'
 
 parameter "Measurement Period" default Interval[@2017-01-01T00:00, @2017-12-31T00:00]
 
@@ -111,8 +117,8 @@ define "Colorectal Cancer Conditions":
 define "Is Colorectal Cancer":
   exists(
     "Colorectal Cancer Conditions" Cond
-      where Cond.verificationStatus = 'confirmed'
-        and Cond.assertedDate before day of end of "Measurement Period"
+      where Cond.verificationStatus ~ "confirmed"
+        and Cond.recordedDate before day of end of "Measurement Period"
   )
 
 define "Total Colectomy Procedures":
@@ -122,5 +128,5 @@ define "Is Total Colectomy":
   exists(
     "Total Colectomy Procedures" Proc
       where Proc.status = 'completed'
-        and end of Proc.performed before day of end of "Measurement Period"
+        and end of (Proc.performed as FHIR.Period) before day of end of "Measurement Period"
   )

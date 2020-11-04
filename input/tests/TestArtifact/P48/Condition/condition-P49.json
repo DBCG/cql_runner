@@ -1,0 +1,61 @@
+{
+  "resourceType": "Condition",
+  "id": "P49",
+  "meta": {
+    "versionId": "1",
+    "lastUpdated": "2020-10-24T17:45:23.921+00:00",
+    "source": "#tJv8RRCPHOGwYfVF"
+  },
+  "text": {
+    "status": "generated",
+    "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\">Hypertension</div>"
+  },
+  "clinicalStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
+      "code": "active",
+      "display": "Active"
+    } ],
+    "text": "Active"
+  },
+  "verificationStatus": {
+    "coding": [ {
+      "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
+      "code": "confirmed",
+      "display": "Confirmed"
+    } ],
+    "text": "Confirmed"
+  },
+  "category": [ {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "14657009",
+      "display": "Diagnosis"
+    } ],
+    "text": "Diagnosis"
+  } ],
+  "severity": {
+    "coding": [ {
+      "system": "http://snomed.info/ct",
+      "code": "255604002",
+      "display": "mild"
+    } ],
+    "text": "Mild"
+  },
+  "code": {
+    "coding": [ {
+      "system": "http://snomed.info/sct",
+      "code": "59621000",
+      "display": "Essential hypertension (disorder)"
+    } ],
+    "text": "hypertension"
+  },
+  "subject": {
+    "reference": "Patient/P48"
+  },
+  "onsetAge": {
+    "value": 68,
+    "system": "http://unitsofmeasure.org",
+    "code": "a"
+  }
+}

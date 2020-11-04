@@ -2,11 +2,11 @@
 Cervical Cancer Screening (CCS)
 */
 
-library CCS_FHIR version '1.0.1'
+library CCSFHIR version '1.0.1'
 
-using FHIR version '3.0.0'
+using FHIR version '4.0.1'
 
-include FHIRHelpers version '3.0.0'
+include FHIRHelpers version '4.0.1'
 
 /*
 Description
@@ -88,7 +88,7 @@ define "Is Cervical Cytology Plus HPV Test In Last 5 Years":
 define "Dates of Cervical Cytology Tests":
   ([Procedure: "Cervical Cytology Value Set"] Proc
     where Proc.status = 'completed'
-    return Proc.performed)
+    return Proc.performed as FHIR.dateTime)
   union
   ([DiagnosticReport: "Cervical Cytology Value Set"] DiagRep
     where DiagRep.status in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
@@ -101,7 +101,7 @@ define "Dates of Cervical Cytology Tests":
 define "Dates of HPV Tests":
   ([Procedure: "HPV Tests Value Set"] Proc
     where Proc.status = 'completed'
-    return Proc.performed)
+    return Proc.performed as FHIR.dateTime)
   union
   ([DiagnosticReport: "HPV Tests Value Set"] DiagRep
     where DiagRep.status.value in { 'preliminary', 'final', 'amended', 'corrected', 'appended' }
