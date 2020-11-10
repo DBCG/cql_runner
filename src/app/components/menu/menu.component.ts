@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MatDialog } from '@angular/material';
+import { MatDialog } from '@angular/material/dialog';
 import { Configuration } from '../config/config.model';
 import { ConfigComponent } from '../config/config.component';
 import { RunnerComponent } from '../runner/runner.component';
