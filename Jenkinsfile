@@ -15,7 +15,7 @@ pipeline {
     stage('Publish') {
         steps {
             withAWS(region:'us-west-2', credentials:'jasonevans') {
-                s3Upload(bucket: "cql-runner.dataphoria.org", path: 'dist', workingDir: 'dist', includePathPattern: '**/*')
+                s3Upload(bucket: "cql-runner.dataphoria.org", path: '/', workingDir: 'dist/cql-runner', includePathPattern: '**/*')
             }
         }
     }
