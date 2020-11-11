@@ -51,12 +51,10 @@ define CqlTimeHour: Time(12)
 define CqlTimeMinute: Time(12, 30)
 define CqlTimeSecond: Time(12, 30, 15)
 define CqlTimeMilli: Time(12, 30, 15, 100)
-define CqlTimeOffset: Time(12, 30, 15, 100, +7.0)
 define CqlTimeLiteralHour: @T12
 define CqlTimeLiteralMinute: @T12:30
 define CqlTimeLiteralSecond: @T12:30:15
 define CqlTimeLiteralMilli: @T12:30:15.100
-define CqlTimeLiteralOffset: @T12:30:15.100+07:00
 
 /*
   Interval
