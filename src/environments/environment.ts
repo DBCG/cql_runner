@@ -9,4 +9,4 @@ export const environment = {
   dataSourceUri: 'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
   librarySourceUri: 'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
   patientId: 'P48'
-}
+};
