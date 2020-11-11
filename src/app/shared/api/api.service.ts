@@ -26,20 +26,31 @@ export class ApiService {
           {
             name : 'patientId',
             valueString : config.patientId
+          },
+          ,
+          {
+            name: 'context',
+            valueString: config.patientId ? 'Patient' : ''
+          },
+          {
+            name : 'terminologyServiceUri',
+            valueString : config.terminologyUri
+          },
+          {
+            name : 'terminologyUser',
+            valueString : config.terminologyUsername
+          },
+          {
+            name : 'terminologyPass',
+            valueString : config.terminologyPassword
           }
         ]
     };
 
-    // const data = {
-    //   code: config.value,
-    //   terminologyServiceUri: config.terminologyUri,
-    //   terminologyUser: config.terminologyUsername,
-    //   terminologyPass: config.terminologyPassword,
+    // TODO: data and library
     //   dataServiceUri: config.dataSourceUri || environment.dataSourceUri,
     //   dataUser: config.dataSourceUsername,
     //   dataPass: config.dataSourcePassword,
-    //   patientId: config.patientId
-    // };
 
     // TODO: enable authorization for engine service
     return this.http.post(config.engineUri || environment.engineUri, JSON.stringify(parameters), {headers});
