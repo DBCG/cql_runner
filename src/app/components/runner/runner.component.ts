@@ -66,28 +66,42 @@ export class RunnerComponent {
 
   processResponses(responses: any) {
     // TODO: Move this sorting/line property to service end
-    responses = this.getNumberedResponses (responses);
-    // Sort responses in ascending order by line number
-    responses = responses.sort((a, b) => {
-      return a.line === b.line ? 0 : +(a.line > b.line) || -1;
-    });
+    // responses = this.getNumberedResponses (responses);
+    // // Sort responses in ascending order by line number
+    // responses = responses.sort((a, b) => {
+    //   return a.line === b.line ? 0 : +(a.line > b.line) || -1;
+    // });
 
     this.oValue += '\n';
 
-    for (const response of responses) {
-      // Invalid expression – could not translate
-      if (response['translation-error']) {
-        this.oValue += '>> Translation Error: ' + response['translation-error'] + '\n';
-      }
-      // Invalid expression – error with named expression
-      if (response['error']) {
-        this.oValue += '>> Error ' + response.location + ': ' + response['error'] + '\n';
-      }
-      // Valid expression
-      if (response['result'] || response['result'] === '') {
-        this.oValue += '>> ' + response['name'] + ' ' + response.location + ' ' + response.result + '\n';
+    if (responses && responses.entry) {
+      for (const e of responses.entry) {
+        const name = e.fullUrl;
+        const p = e.resource?.parameter;
+        let value = 'undefined';
+        let location = 'unknown';
+        if (p) {
+          location = p[0].valueString;
+          value = p[1].valueString;
+        }
+        this.oValue += '>> ' + name + ' ' + location + ' ' + value + '\n';
       }
     }
+
+    // for (const response of responses) {
+    //   // Invalid expression – could not translate
+    //   if (response['translation-error']) {
+    //     this.oValue += '>> Translation Error: ' + response['translation-error'] + '\n';
+    //   }
+    //   // Invalid expression – error with named expression
+    //   if (response['error']) {
+    //     this.oValue += '>> Error ' + response.location + ': ' + response['error'] + '\n';
+    //   }
+    //   // Valid expression
+    //   if (response['result'] || response['result'] === '') {
+    //     this.oValue += '>> ' + response['name'] + ' ' + response.location + ' ' + response.result + '\n';
+    //   }
+    // }
 
     this.updateOutput();
   }
@@ -95,7 +109,7 @@ export class RunnerComponent {
     const currentEngineUrl = this.config.engineUri;
     const input = this.codeEditors.find((mirror) => mirror.type === EditorType.input);
     this.config.value = input.value;
-    this.config.engineUri = 'http://cql.dataphoria.org/cql/format';
+    this.config.engineUri = 'https://cql.dataphoria.org/cql/format';
     this.apiService.post(this.config)
       .forEach(responses => {
         this.processResponse(responses);

@@ -20,7 +20,7 @@ export class ConfigComponent {
 
   // TODO: Move to environmental config
   engineUrlOptions = [
-    'http://cql.dataphoria.org/cql/evaluate',
+    'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir/$cql',
   ];
 
   // fhirUrlOptions = [
@@ -32,7 +32,7 @@ export class ConfigComponent {
   // ];
 
   terminologyUrlOptions = [
-    'http://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
+    'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
     'http://test.fhir.org/r2',
     'http://test.fhir.org/r3',
     'http://test.fhir.org/r4',
@@ -40,7 +40,7 @@ export class ConfigComponent {
   ];
 
   dataSourceUrlOptions = [
-    'http://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
+    'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
     'http://test.fhir.org/r2',
     'http://test.fhir.org/r3',
     'http://test.fhir.org/r4',
@@ -48,7 +48,7 @@ export class ConfigComponent {
   ];
 
   libraryUrlOptions = [
-    'http://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
+    'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
     'http://test.fhir.org/r2',
     'http://test.fhir.org/r3',
     'http://test.fhir.org/r4',

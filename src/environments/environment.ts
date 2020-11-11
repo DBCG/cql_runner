@@ -4,8 +4,8 @@
 
 export const environment = {
   production: false,
-  engineUri: 'http://cql.dataphoria.org/cql/evaluate',
-  terminologyUri: 'http://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
-  dataSourceUri: 'http://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
-  librarySourceUri: 'http://cql-sandbox.alphora.com/cqf-ruler-r4/fhir'
+  engineUri: 'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir/$cql',
+  terminologyUri: 'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
+  dataSourceUri: 'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
+  librarySourceUri: 'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir'
 };

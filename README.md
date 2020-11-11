@@ -6,7 +6,7 @@
 
 ## See it in Action
 
-[CQL Runner](http://cql-runner.dataphoria.org/) implementation.
+[CQL Runner](https://cql-runner.dataphoria.org/) implementation.
 
 ## Introduction
 

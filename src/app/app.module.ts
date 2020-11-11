@@ -22,7 +22,7 @@ import { ConfigComponent } from './components/config/config.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HeaderComponent } from './components/header/header.component';
 import { CodeMirrorDirective } from './shared/code-mirror/code-mirror.directive';
-import { FormatterComponent } from './components/formatter/formatter.component';
+// import { FormatterComponent } from './components/formatter/formatter.component';
 import { MenuComponent } from './components/menu/menu.component';
 
 import { ConfigService } from './components/config/config.service';
@@ -37,7 +37,7 @@ import { routing } from './app-routing.module';
     FooterComponent,
     HeaderComponent,
     CodeMirrorDirective,
-    FormatterComponent,
+    // FormatterComponent,
     MenuComponent
   ],
   entryComponents: [

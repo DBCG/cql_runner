@@ -15,19 +15,34 @@ export class ApiService {
     const headers = new HttpHeaders({
       'Content-Type': 'application/json'
     });
-    const data = {
-      code: config.value,
-      terminologyServiceUri: config.terminologyUri,
-      terminologyUser: config.terminologyUsername,
-      terminologyPass: config.terminologyPassword,
-      dataServiceUri: config.dataSourceUri || environment.dataSourceUri,
-      dataUser: config.dataSourceUsername,
-      dataPass: config.dataSourcePassword,
-      patientId: config.patientId
+
+    const parameters = {
+        resourceType : 'Parameters',
+        parameter: [
+          {
+            name: 'code',
+            valueString: config.value
+          },
+          {
+            name : 'patientId',
+            valueString : config.patientId
+          }
+        ]
     };
 
+    // const data = {
+    //   code: config.value,
+    //   terminologyServiceUri: config.terminologyUri,
+    //   terminologyUser: config.terminologyUsername,
+    //   terminologyPass: config.terminologyPassword,
+    //   dataServiceUri: config.dataSourceUri || environment.dataSourceUri,
+    //   dataUser: config.dataSourceUsername,
+    //   dataPass: config.dataSourcePassword,
+    //   patientId: config.patientId
+    // };
+
     // TODO: enable authorization for engine service
-    return this.http.post(config.engineUri || environment.engineUri, JSON.stringify(data), {headers});
+    return this.http.post(config.engineUri || environment.engineUri, JSON.stringify(parameters), {headers});
   }
 
   private handleError(error: HttpErrorResponse) {
