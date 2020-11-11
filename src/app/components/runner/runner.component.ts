@@ -82,7 +82,7 @@ export class RunnerComponent {
         let location = 'unknown';
         if (p) {
           location = p[0].valueString;
-          value = p[1].valueString;
+          value = p[1].valueString ? p[1].valueString : (p[1].resource ? JSON.stringify(p[1].resource) : 'undefined');
         }
         this.oValue += '>> ' + name + ' ' + location + ' ' + value + '\n';
       }

@@ -1,3 +1,4 @@
+import { CoreEnvironment } from '@angular/compiler/src/compiler_facade_interface';
 import { environment } from '../../../environments/environment';
 
 export interface IConfiguration {
@@ -33,5 +34,5 @@ export class Configuration implements IConfiguration {
   librarySourceUri = environment.librarySourceUri;
   librarySourceUsername: string;
   librarySourcePassword: string;
-  patientId: string;
+  patientId = environment.patientId;
 }

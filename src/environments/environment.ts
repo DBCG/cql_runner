@@ -7,5 +7,6 @@ export const environment = {
   engineUri: 'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir/$cql',
   terminologyUri: 'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
   dataSourceUri: 'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
-  librarySourceUri: 'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir'
-};
+  librarySourceUri: 'https://cql-sandbox.alphora.com/cqf-ruler-r4/fhir',
+  patientId: 'P48'
+}
