@@ -68,5 +68,25 @@
         ]
       }
     ]
+  },
+  "expansion": {
+    "timestamp": "2020-04-16T08:10:00.0Z",
+    "contains": [
+      {
+        "system": "http://loinc.org",
+        "code": "11778-8",
+        "display": "Delivery date Estimated"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "11779-6",
+        "display": "Delivery date Estimated from last menstrual period"
+      },
+      {
+        "system": "http://loinc.org",
+        "code": "11780-4",
+        "display": "Delivery date Estimated from ovulation date"
+      }
+    ]
   }
 }
