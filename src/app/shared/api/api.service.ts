@@ -16,36 +16,70 @@ export class ApiService {
       'Content-Type': 'application/json'
     });
 
+    // TODO: add authorization headers for endpoints
     const parameters = {
         resourceType : 'Parameters',
         parameter: [
           {
-            name: 'code',
+            name: 'content',
             valueString: config.value
           },
           {
-            name : 'patientId',
+            name : 'subject',
             valueString : config.patientId
           },
           ,
           {
-            name: 'context',
-            valueString: config.patientId ? 'Patient' : ''
+            name: 'dataEndpoint',
+            resource: {
+              resourceType: "Endpoint",
+              status: "active",
+              connectionType: {
+                system: "http://terminology.hl7.org/CodeSystem/endpoint-connection-type",
+                code: "hl7-fhir-rest"
+              },
+              address: config.dataSourceUri,
+              header: [
+                "Content-Type: application/json"
+              ]
+            }
           },
           {
-            name : 'terminologyServiceUri',
-            valueString : config.terminologyUri
+            name : 'terminologyEndpoint',
+            resource: {
+              resourceType: "Endpoint",
+              status: "active",
+              connectionType: {
+                system: "http://terminology.hl7.org/CodeSystem/endpoint-connection-type",
+                code: "hl7-fhir-rest"
+              },
+              address: config.terminologyUri,
+              header: [
+                "Content-Type: application/json"
+              ]
+            }
           },
           {
-            name : 'terminologyUser',
-            valueString : config.terminologyUsername
-          },
-          {
-            name : 'terminologyPass',
-            valueString : config.terminologyPassword
+            name : 'contentEndpoint',
+            resource: {
+              resourceType: "Endpoint",
+              status: "active",
+              connectionType: {
+                system: "http://terminology.hl7.org/CodeSystem/endpoint-connection-type",
+                code: "hl7-fhir-rest"
+              },
+              address: config.librarySourceUri,
+              header: [
+                "Content-Type: application/json"
+              ]
+            }
           }
         ]
     };
+
+    if (config.dataSourceUri !== environment.dataSourceUri) {
+      parameters.parameter.pop();
+    }
 
     // TODO: data and library
     //   dataServiceUri: config.dataSourceUri || environment.dataSourceUri,

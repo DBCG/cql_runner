@@ -6,6 +6,7 @@ import { Configuration } from '../config/config.model';
 import { ConfigService } from '../config/config.service';
 import { CodeMirrorDirective } from '../../shared/code-mirror/code-mirror.directive';
 import { EditorType } from '../../shared/code-mirror/code-mirror.model';
+import { environment } from 'src/environments/environment';
 
 @Component ({
   selector: 'app-runner',
@@ -54,81 +55,20 @@ export class RunnerComponent {
     }
   }
 
-  // Tacks on line numbers from the given string location
-  private getNumberedResponses(responses: any) {
-    for (const response of responses) {
-      if (!response['translation-error'] && !response['error']) {
-        response.line = parseInt(response.location.substring(response.location.indexOf('[') + 1, response.location.indexOf(':')));
-      }
-    }
-    return responses;
-  }
-
   processResponses(responses: any) {
-    // TODO: Move this sorting/line property to service end
-    // responses = this.getNumberedResponses (responses);
-    // // Sort responses in ascending order by line number
-    // responses = responses.sort((a, b) => {
-    //   return a.line === b.line ? 0 : +(a.line > b.line) || -1;
-    // });
-
     this.oValue += '\n';
 
-    if (responses && responses.entry) {
-      for (const e of responses.entry) {
-        const name = e.fullUrl;
-        const p = e.resource?.parameter;
+    if (responses && responses.parameter) {
+      for (const e of responses.parameter) {
+        const name = e.name;
         let value = 'undefined';
-        let location = 'unknown';
-        if (p) {
-          location = p[0].valueString;
-          value = p[1].valueString ? p[1].valueString : (p[1].resource ? JSON.stringify(p[1].resource) : 'undefined');
-        }
-        this.oValue += '>> ' + name + ' ' + location + ' ' + value + '\n';
+        value = Object.keys(e).filter(k => k.startsWith('value'))[0];
+        value = e[value] ?  JSON.stringify(e[value]) : (e.resource ? JSON.stringify(e.resource) : 'undefined');
+        this.oValue += '>> ' + name + ': ' + value + '\n';
       }
     }
-
-    // for (const response of responses) {
-    //   // Invalid expression – could not translate
-    //   if (response['translation-error']) {
-    //     this.oValue += '>> Translation Error: ' + response['translation-error'] + '\n';
-    //   }
-    //   // Invalid expression – error with named expression
-    //   if (response['error']) {
-    //     this.oValue += '>> Error ' + response.location + ': ' + response['error'] + '\n';
-    //   }
-    //   // Valid expression
-    //   if (response['result'] || response['result'] === '') {
-    //     this.oValue += '>> ' + response['name'] + ' ' + response.location + ' ' + response.result + '\n';
-    //   }
-    // }
 
     this.updateOutput();
-  }
-  format() {
-    const currentEngineUrl = this.config.engineUri;
-    const input = this.codeEditors.find((mirror) => mirror.type === EditorType.input);
-    this.config.value = input.value;
-    this.config.engineUri = 'https://cql.dataphoria.org/cql/format';
-    this.apiService.post(this.config)
-      .forEach(responses => {
-        this.processResponse(responses);
-      })
-      .catch(error => {
-        this.output = error;
-        this.displayOutput();
-      });
-    this.config.engineUri = currentEngineUrl;
-  }
-
-  processResponse(responses: any) {
-    for (const response of responses) {
-      if (response['formatted-cql']) {
-        this.output = response['formatted-cql'];
-      }
-    }
-
-    this.displayOutput();
   }
 
   displayOutput() {
