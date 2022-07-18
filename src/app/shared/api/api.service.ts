@@ -77,15 +77,6 @@ export class ApiService {
         ]
     };
 
-    if (config.dataSourceUri !== environment.dataSourceUri) {
-      parameters.parameter.pop();
-    }
-
-    // TODO: data and library
-    //   dataServiceUri: config.dataSourceUri || environment.dataSourceUri,
-    //   dataUser: config.dataSourceUsername,
-    //   dataPass: config.dataSourcePassword,
-
     // TODO: enable authorization for engine service
     return this.http.post(config.engineUri || environment.engineUri, JSON.stringify(parameters), {headers});
   }
