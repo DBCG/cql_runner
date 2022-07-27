@@ -154,7 +154,7 @@
               <input #librarySourceUrl type="text" matInput [(ngModel)]="config.librarySourceUri" [matAutocomplete]="librarySourceUrlAuto" placeholder="Library Repository URL" aria-label="Library Repository URL">
             </mat-form-field>
             <mat-autocomplete #librarySourceUrlAuto="matAutocomplete">
-              <mat-option *ngFor="let option of librarySourceUrlOptions" [value]="option">
+              <mat-option *ngFor="let option of libraryUrlOptions" [value]="option">
                 {{ option }}
               </mat-option>
             </mat-autocomplete>

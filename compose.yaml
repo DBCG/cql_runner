@@ -1,0 +1,12 @@
+version: '3.7'
+services:
+  cql-runner:
+    container_name: cql-runner
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 4200:4200
+    volumes:
+      - '.:/app'
+      - '/app/node_modules'

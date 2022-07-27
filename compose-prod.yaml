@@ -1,0 +1,9 @@
+version: '3.7'
+services:
+  cql-runner-prod:
+    container_name: cql-runner-prod
+    build:
+      context: .
+      dockerfile: Dockerfile-prod
+    ports:
+      - 80:80
