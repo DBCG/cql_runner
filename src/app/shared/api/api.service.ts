@@ -3,7 +3,6 @@ import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
 import { Configuration } from '../../components/config/config.model';
 import { environment } from '../../../environments/environment';
-import { catchError } from 'rxjs/internal/operators';
 
 @Injectable()
 export class ApiService {
