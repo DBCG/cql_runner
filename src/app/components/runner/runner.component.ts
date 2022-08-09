@@ -63,7 +63,7 @@ export class RunnerComponent {
         const name = e.name;
         let value = 'undefined';
         value = Object.keys(e).filter(k => k.startsWith('value'))[0];
-        value = e[value] ?  JSON.stringify(e[value]) : (e.resource ? JSON.stringify(e.resource) : 'undefined');
+        value = e[value] ?  JSON.stringify(e[value], null, 2) : (e.resource ? JSON.stringify(e.resource, null, 2) : 'undefined');
         this.oValue += '>> ' + name + ': ' + value + '\n';
       }
     }
