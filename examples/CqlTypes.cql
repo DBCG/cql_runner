@@ -3,7 +3,7 @@
 */
 library CqlTypes version '2.0'
 
-using FHIR version '4.0.1' // For Tuple example
+using FHIR version '4.0.1'
 
 context Patient
 
@@ -57,36 +57,9 @@ define CqlTimeLiteralSecond: @T12:30:15
 define CqlTimeLiteralMilli: @T12:30:15.100
 
 /*
-  Interval
-  Intervals in CQL are represented by specifying the low and high points of the interval
-  and whether the boundary is inclusive (meaning the boundary point is part of the interval)
-  or exclusive (meaning the boundary point is excluded from the interval). Following standard
-  mathematics notation, inclusive (closed) boundaries are indicated with square brackets, and
-  exclusive (open) boundaries are indicated with parentheses.
-*/
-define CqlIntervalIncludeBothBoundaries: Interval[2, 7]
-// When the Interval is exclusive, the predecessor or successor value for the type is used
-define CqlIntervalExcludeStart: Interval(DateTime(2012), DateTime(2014)]
-define CqlIntervalExcludeEnd: Interval[DateTime(2012), DateTime(2014))
-define CqlIntervalExcludeBoth: Interval(2.99999999, 4.00000001)
-
-/*
   List
   CQL supports the representation of lists of any type of value (including other lists),
   but all the elements within a given list must be of the same type.
 */
 define CqlList: { 1, 2, 3 }
 define CqlListOfList: { { 1 }, { 1, 2, 3}, { 4 }, { 5 } }
-
-/*
-  Tuple
-  Structured values, or tuples, are values that contain named elements,
-  each having a value of some type. Clinical information such as a Medication,
-  a Condition, or an Encounter is represented using tuples.
-*/
-define CqlTuple: Tuple { id: 5, name: 'Noweigh'}
-define CqlNestedTuples: Tuple { id: 5, name: Tuple { first: 'Noweigh', last: 'Jose'} }
-define CqlTupleClinicalInformation: Encounter { status: FHIR.EncounterStatus { value: 'planned' } }
-
-// String
-define CqlString: CqlTuple.name
