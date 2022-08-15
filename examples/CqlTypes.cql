@@ -5,8 +5,6 @@ library CqlTypes version '2.0'
 
 using FHIR version '4.0.1'
 
-context Patient
-
 // Integer
 define CqlInteger: 5
 define IntegerUpperBound: 2147483647
