@@ -1,13 +1,13 @@
 <app-menu [runner]="this"></app-menu>
-<div fxLayout="row" class="runner">
-  <div fxFlex="50%">
+<div class="runner">
+  <div class="runner-panel">
     <!--Input-->
-    <nav class="input" fxLayout fxLayoutAlign="space-between none">
-      <div class="in" fxLayout fxLayoutAlign="center center">
+    <nav class="input">
+      <div class="in">
         <h4>Input</h4>
       </div>
-      <div fxLayout fxLayoutAlign="center center">
-        <button title="If code is selected, only the selected code will be executed" class="run" [class.running]="running" (click)="run()" fxLayout="column" fxLayoutAlign="center center" mat-raised-button>
+      <div class="nav-action">
+        <button title="If code is selected, only the selected code will be executed" class="run" [class.running]="running" (click)="run()" mat-raised-button>
           <i class="material-icons icon" *ngIf="!running">play_arrow</i>
           <i class="material-icons icon" *ngIf="running">hourglass_full</i>
           <div>
@@ -20,12 +20,12 @@
       <textarea cql-code-mirror [type]="EditorType.input">{{ getExample() }}</textarea>
     </div>
   </div>
-  <div fxFlex="50%">
-    <nav class="output" fxLayout fxLayoutAlign="space-between none">
-      <div class="out" fxLayout fxLayoutAlign="center center">
+  <div class="runner-panel">
+    <nav class="output">
+      <div class="out">
         <h4>Output</h4>
       </div>
-      <button class="clear" [class.running]="running" id="clearBtn" (click)="clear()" fxLayout="column" fxLayoutAlign="center center" mat-raised-button>
+      <button class="clear" [class.running]="running" id="clearBtn" (click)="clear()" mat-raised-button>
         <i class="material-icons icon">clear_all</i>
         <div>
           Clear

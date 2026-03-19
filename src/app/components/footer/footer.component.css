@@ -1,4 +1,8 @@
 .footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   height: 40px !important;
   min-height: 40px;
   background-color: #2f2f2f;
@@ -20,6 +24,9 @@
 }
 
 .issues {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 200px;
   background-color: #e91e63;
   border: none;
