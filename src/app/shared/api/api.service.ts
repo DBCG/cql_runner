@@ -27,51 +27,54 @@ export class ApiService {
             name : 'subject',
             valueString : config.patientId
           },
-          ,
           {
             name: 'dataEndpoint',
             resource: {
-              resourceType: "Endpoint",
-              status: "active",
+              resourceType: 'Endpoint',
+              status: 'active',
               connectionType: {
-                system: "http://terminology.hl7.org/CodeSystem/endpoint-connection-type",
-                code: "hl7-fhir-rest"
+                system: 'http://terminology.hl7.org/CodeSystem/endpoint-connection-type',
+                code: 'hl7-fhir-rest'
               },
               address: config.dataSourceUri,
               header: [
-                "Content-Type: application/json"
+                'Content-Type: application/json'
               ]
             }
           },
           {
             name : 'terminologyEndpoint',
             resource: {
-              resourceType: "Endpoint",
-              status: "active",
+              resourceType: 'Endpoint',
+              status: 'active',
               connectionType: {
-                system: "http://terminology.hl7.org/CodeSystem/endpoint-connection-type",
-                code: "hl7-fhir-rest"
+                system: 'http://terminology.hl7.org/CodeSystem/endpoint-connection-type',
+                code: 'hl7-fhir-rest'
               },
               address: config.terminologyUri,
               header: [
-                "Content-Type: application/json"
+                'Content-Type: application/json'
               ]
             }
           },
           {
             name : 'contentEndpoint',
             resource: {
-              resourceType: "Endpoint",
-              status: "active",
+              resourceType: 'Endpoint',
+              status: 'active',
               connectionType: {
-                system: "http://terminology.hl7.org/CodeSystem/endpoint-connection-type",
-                code: "hl7-fhir-rest"
+                system: 'http://terminology.hl7.org/CodeSystem/endpoint-connection-type',
+                code: 'hl7-fhir-rest'
               },
               address: config.librarySourceUri,
               header: [
-                "Content-Type: application/json"
+                'Content-Type: application/json'
               ]
             }
+          },
+          {
+            name: 'useServerData',
+            valueBoolean: false
           }
         ]
     };
@@ -92,7 +95,6 @@ export class ApiService {
               `body was: ${error.error}`);
       }
       // return an observable with a user-facing error message
-      return throwError(
-          'Something bad happened; please try again later.');
+      return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 }
