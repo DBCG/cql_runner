@@ -1,4 +1,5 @@
-import { Component, ViewChildren, QueryList } from '@angular/core';
+import { Component, ViewChildren, QueryList, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { ApiService } from '../../shared/api/api.service';
 import * as glob from '../menu/example';
 import { Configuration } from '../config/config.model';
@@ -15,10 +16,12 @@ import { environment } from 'src/environments/environment';
   providers: [ ApiService ]
 })
 
-export class RunnerComponent {
+export class RunnerComponent implements OnDestroy {
   constructor(private apiService: ApiService, private configService: ConfigService) {
     this.config = configService.config;
   }
+
+  private runSubscription: Subscription | null = null;
 
 
   EditorType = EditorType;
@@ -43,16 +46,18 @@ export class RunnerComponent {
       this.running = true;
       const input = this.codeEditors.find((mirror) => mirror.type === EditorType.input);
       this.config.value = input.value;
-      this.apiService.post(this.config)
-        .forEach(responses => {
-          this.processResponses(responses);
-          this.running = false;
-        })
-        .catch(error => {
-          this.error = error;
-          this.running = false;
-          this.oValue += '>> Engine Service call failed: ' + error + '\n';
-          this.updateOutput();
+      this.runSubscription = this.apiService.post(this.config)
+        .subscribe({
+          next: (responses) => {
+            this.processResponses(responses);
+            this.running = false;
+          },
+          error: (error) => {
+            this.error = error;
+            this.running = false;
+            this.oValue += '>> Engine Service call failed: ' + error + '\n';
+            this.updateOutput();
+          }
         });
     }
   }
@@ -254,6 +259,12 @@ export class RunnerComponent {
   private toCqlList(arr: any[]): string {
     const items = arr.map((el) => Array.isArray(el) ? this.toCqlList(el) : this.toCqlScalar(el));
     return `{ ${items.join(', ')} }`;
+  }
+
+  ngOnDestroy() {
+    if (this.runSubscription) {
+      this.runSubscription.unsubscribe();
+    }
   }
 
   getExample() {
