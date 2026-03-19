@@ -1,5 +1,3 @@
-// import { MATERIAL_COMPATIBILITY_MODE } from '@angular/material'; // Strip out once they fix
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -38,9 +36,6 @@ import { routing } from './app-routing.module';
     CodeMirrorDirective,
     MenuComponent
   ],
-  entryComponents: [
-    ConfigComponent
-  ],
   imports: [
     BrowserModule,
     FormsModule,
@@ -59,7 +54,6 @@ import { routing } from './app-routing.module';
     routing
   ],
   providers: [
-    // { provide: MATERIAL_COMPATIBILITY_MODE, useValue: true }, // Strip out once they fix
     ConfigService
   ],
   bootstrap: [AppComponent]

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse, HttpHeaders} from '@angular/common/http';
 import {Observable, throwError} from 'rxjs';
+import {catchError} from 'rxjs/operators';
 import { Configuration } from '../../components/config/config.model';
 import { environment } from '../../../environments/environment';
 
@@ -80,7 +81,8 @@ export class ApiService {
     };
 
     // TODO: enable authorization for engine service
-    return this.http.post(config.engineUri || environment.engineUri, JSON.stringify(parameters), {headers});
+    return this.http.post(config.engineUri || environment.engineUri, JSON.stringify(parameters), {headers})
+      .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
