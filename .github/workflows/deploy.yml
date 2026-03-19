@@ -18,6 +18,8 @@ jobs:
 
       - run: npm install
 
+      - run: npm test -- --no-watch --browsers=ChromeHeadless
+
       - run: npm run build
 
       - uses: aws-actions/configure-aws-credentials@v4
