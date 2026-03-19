@@ -6,10 +6,4 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.css']
 })
 
-export class HeaderComponent {
-  resources = false;
-
-  toggleResources() {
-    this.resources = !this.resources;
-  }
-}
+export class HeaderComponent { }
