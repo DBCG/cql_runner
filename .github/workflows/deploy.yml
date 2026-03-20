@@ -29,3 +29,5 @@ jobs:
           aws-region: us-west-2
 
       - run: aws s3 sync dist/cql-runner s3://cql-runner.dataphoria.org --delete
+
+      - run: aws cloudfront create-invalidation --distribution-id ${{ secrets.CLOUDFRONT_DISTRIBUTION_ID }} --paths "/*"
